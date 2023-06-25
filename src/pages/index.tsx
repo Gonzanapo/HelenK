@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Semaforo } from "./components/image";
+import { Semaforo } from "../components/image";
 import Head from "next/head";
 
 export default function Home() {
