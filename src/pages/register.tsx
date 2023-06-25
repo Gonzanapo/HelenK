@@ -1,8 +1,46 @@
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
+import Router from 'next/router';
+import * as z from "zod";
+import { useState } from "react";
 
 export default function Register() {
+    const schema = z.object({
+        email: z.string().email(),
+        password: z.string().min(5).max(20),
+        confirmPassword: z.string().min(5).max((20)),
+    }).refine((data) => data.password === data.confirmPassword, {
+        message: "Las contraseñas no coinciden",
+        path: ["confirmPassword"],
+    });
+
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+        confirmPassword: "",
+    });
+
+    const handleChange = (event:any) => {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = (event:any) => {
+        event.preventDefault();
+        try {
+            schema.parse(formData);
+            // Form data is valid
+            // Submit form data
+        } catch (error) {
+            // Form data is invalid
+            // Display error message
+        }
+    };
+
     return (
         <div className="contenedor_register">
             <header className="top-header">
@@ -17,22 +55,40 @@ export default function Register() {
                     Estamos felices de verte!
                     <br />
                     Gracias por elegirnos.
-                </h2>   
+                </h2>
             </header>
             <main className="main_register">
-                <form className="form_register">
-                    
-                    <input className="input_register" type="name" placeholder="Nombre Completo" />
-                    <input className="input_register" type="email" placeholder="Correo Electrónico" />
-                    <input className="input_register" type="password" placeholder="Contraseña" />
-                    <input className="input_register" type="password" placeholder="Confirma contraseña" />
+                <form className="form_register" onSubmit={handleSubmit}>
+                    <input
+                        className="input_register"
+                        type="email"
+                        name="email"
+                        placeholder="Correo Electrónico"
+                        onChange={handleChange}
+                    />
+                    <input
+                        className="input_register"
+                        type="password"
+                        name="password"
+                        placeholder="Contraseña"
+                        onChange={handleChange}
+                    />
+                    <input
+                        className="input_register"
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirma contraseña"
+                        onChange={handleChange}
+                    />
                     <br />
-                    <button type="submit" className="button">Regístrate</button>
+                    <button  type="submit" className="button" onClick={}>
+                        Regístrate
+                    </button>
                 </form>
             </main>
             <main className="bottom-main-register">
                 <div>
-                    <h3 className="google_facebook">Iniciar Sesión con Google</h3>
+                    <h3 className="google_facebook">Regístrarse con Google</h3>
                 </div>
                 <div className="button_auth">
                     <AuthShowcase />
@@ -52,18 +108,18 @@ export default function Register() {
 function AuthShowcase() {
     const { data: sessionData } = useSession();
 
-    const { data: secretMessage } = api.example.getSecretMessage.useQuery(
-        undefined, // no input
-        { enabled: sessionData?.user !== undefined },
-    );
+    const handleSignIn = async () => {
+        await signIn();
+        Router.replace('/maps');
+    }
 
-    return  (
+    return (
         <div className="button_auth">
             <button
                 className="button_google"
-                onClick={sessionData ? () => void signOut() : () => void signIn()}
+                onClick={sessionData ? () => void signOut() : handleSignIn}
             >
-                {sessionData ? "Sign out" : "Sign in"}
+                {sessionData ? "Sign out" : "Registrarse"}
             </button>
         </div>
     );

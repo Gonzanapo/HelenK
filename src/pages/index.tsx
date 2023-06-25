@@ -2,9 +2,12 @@ import Link from "next/link";
 import { Semaforo } from "../components/image";
 import Head from "next/head";
 
+
 export default function Home() {
+
+
   return (
-    
+
     <div>
       <Head>
         <title>HelenK</title>
@@ -16,7 +19,7 @@ export default function Home() {
       </header>
       <main className="main">
         <h1>La seguridad siempre está en tus manos</h1>
-        <br />  
+        <br />
         <p>Hacé de tu viaje en las calles una experiencia agradable</p>
       </main>
       <main className="bottom-main">
