@@ -1,0 +1,89 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  /* Estilos de la barra de navegación */
+  .Navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .link {
+    color: black;
+    padding: 15px;
+    margin: 0 10px;
+    background-color: #d9d9d9;
+    border-radius: 40px;
+    text-decoration: none;
+    width: 100%;
+  }
+  
+  /* Estilos del contenido principal */
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 30vh;
+  }
+  
+  .bottom-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+  }
+  
+  .main h1 {
+    font-size: 25px;
+    font-weight: 200;
+  }
+  
+  .carr {
+    display: flex;
+  }
+  
+  .main p {
+    font-size: 15px;
+    color: #7c7a81;
+  }
+  
+  /* Estilos del encabezado */
+  .header {
+    height: 45vh;
+  }
+  
+  .button_carrousel {
+    background-color: #d9d9d9;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 100%;
+    border: none;
+  }
+  
+  /* Estilos del pie de página */
+  .footer {
+    height: 6vh;
+  }
+  
+  /* Estilos del logotipo */
+  .logo {
+    width: 100%;
+    height: 100%;
+  }
+  
