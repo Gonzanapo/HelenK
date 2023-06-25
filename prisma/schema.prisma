@@ -56,6 +56,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    homes         MapsHome[]
 }
 
 model VerificationToken {
@@ -66,3 +67,13 @@ model VerificationToken {
     @@unique([identifier, token])
 }
 
+// add a model "Home" that keeps the ubication of your home 
+model MapsHome {
+    id String @id @default(cuid())
+    name String
+    address String
+    latitude Float
+    longitude Float
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId String
+} 

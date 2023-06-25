@@ -21,6 +21,7 @@ export default function Register() {
             </header>
             <main className="main_register">
                 <form className="form_register">
+                    
                     <input className="input_register" type="name" placeholder="Nombre Completo" />
                     <input className="input_register" type="email" placeholder="Correo Electrónico" />
                     <input className="input_register" type="password" placeholder="Contraseña" />
