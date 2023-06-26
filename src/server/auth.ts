@@ -7,8 +7,8 @@ import {
 } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcrypt";
+// import CredentialsProvider from "next-auth/providers/credentials";
+// import bcrypt from "bcrypt";
 import { env } from "~/env.mjs";
 import { prisma } from "~/server/db";
 
