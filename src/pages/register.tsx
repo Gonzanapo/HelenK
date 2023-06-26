@@ -2,12 +2,12 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 import Router from 'next/router';
-import * as z from "zod";
+import z from "zod";
 import { useState } from "react";
 import { Sign } from "crypto";
 
 async function handleGoogleSignIn(){
-    signIn("google",{callbackUrl:""})
+    signIn("google",{callbackUrl:"/maps"})
 }
 
 export default function Register() {
