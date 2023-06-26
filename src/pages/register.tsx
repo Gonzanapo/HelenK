@@ -4,6 +4,7 @@ import { api } from "~/utils/api";
 import Router from 'next/router';
 import * as z from "zod";
 import { useState } from "react";
+import { Sign } from "crypto";
 
 export default function Register() {
     const schema = z.object({
@@ -64,21 +65,21 @@ export default function Register() {
                         type="email"
                         name="email"
                         placeholder="Correo Electrónico"
-                        onChange={handleChange}
+                        // onChange={handleChange}
                     />
                     <input
                         className="input_register"
                         type="password"
                         name="password"
                         placeholder="Contraseña"
-                        onChange={handleChange}
+                        // onChange={handleChange}
                     />
                     <input
                         className="input_register"
                         type="password"
                         name="confirmPassword"
                         placeholder="Confirma contraseña"
-                        onChange={handleChange}
+                        // onChange={handleChange}
                     />
                     <br />
                     <button  type="submit" className="button" >
@@ -108,16 +109,16 @@ export default function Register() {
 function AuthShowcase() {
     const { data: sessionData } = useSession();
 
-    const handleSignIn = async () => {
-        await signIn();
-        Router.replace('/maps');
-    }
+    // const handleSignIn = async () => {
+    //     await signIn();
+    //     Router.replace('/maps');
+    // }
 
     return (
         <div className="button_auth">
             <button
                 className="button_google"
-                onClick={sessionData ? () => void signOut() : handleSignIn}
+                onClick={sessionData ? () => void signOut() :() => void signIn()}
             >
                 {sessionData ? "Sign out" : "Registrarse"}
             </button>

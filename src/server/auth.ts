@@ -33,41 +33,41 @@ export const authOptions: NextAuthOptions = {
   },
   adapter: PrismaAdapter(prisma),
   providers: [
-    CredentialsProvider({
-      name: "Sign In",
-      credentials: {
-        email: {
-          label: "Email",
-          type: "email",
-          placeholder: "example@example.com",
-        },
-        password: {
-          label: "Password",
-          type: "password",
-        },
-        confirmPassword: {
-          label: "Confirm Password",
-          type: "password",
-        },
-      },
-      async authorize(
-        credentials: Record<"email" | "password" | "confirmPassword", string> | undefined
-      ) {
-        if (!credentials) {
-          return null;
-        }
-        // Add your logic for verifying the user's credentials here
-        const user = await prisma.user.findUnique({
-          where: { email: credentials.email },
-        });
+    // CredentialsProvider({
+    //   name: "Sign In",
+    //   credentials: {
+    //     email: {
+    //       label: "Email",
+    //       type: "email",
+    //       placeholder: "example@example.com",
+    //     },
+    //     password: {
+    //       label: "Password",
+    //       type: "password",
+    //     },
+    //     confirmPassword: {
+    //       label: "Confirm Password",
+    //       type: "password",
+    //     },
+    //   },
+    //   async authorize(
+    //     credentials: Record<"email" | "password" | "confirmPassword", string> | undefined
+    //   ) {
+    //     if (!credentials) {
+    //       return null;
+    //     }
+    //     // Add your logic for verifying the user's credentials here
+    //     const user = await prisma.user.findUnique({
+    //       where: { email: credentials.email },
+    //     });
     
-        if (user && (await bcrypt.compare(credentials.password, user.password))) {
-          return user;
-        } else {
-          return null;
-        }
-      },
-    }),
+    //     if (user && (await bcrypt.compare(credentials.password, user.password))) {
+    //       return user;
+    //     } else {
+    //       return null;
+    //     }
+    //   },
+    // }),
 
 
     //next-auth providers
@@ -83,11 +83,9 @@ export const authOptions: NextAuthOptions = {
   ],
 };
 
-export const getServerAuthSession = (
-  ctx: {
-    req: GetServerSidePropsContext["req"];
-    res: GetServerSidePropsContext["res"];
-  }
-) => {
+export const getServerAuthSession = (ctx: {
+  req: GetServerSidePropsContext["req"];
+  res: GetServerSidePropsContext["res"];
+}) => {
   return getServerSession(ctx.req, ctx.res, authOptions);
 };

@@ -1,6 +1,6 @@
 import { exampleRouter } from "~/server/api/routers/example";
 import { createTRPCRouter } from "~/server/api/trpc";
-import { homeRouter } from "~/server/api/routers/mapsHome";
+// import { homeRouter } from "~/server/api/routers/mapsHome";
 
 /**
  * This is the primary router for your server.
