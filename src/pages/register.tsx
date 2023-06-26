@@ -6,6 +6,10 @@ import * as z from "zod";
 import { useState } from "react";
 import { Sign } from "crypto";
 
+async function handleGoogleSignIn(){
+    signIn("google",{callbackUrl:""})
+}
+
 export default function Register() {
     const schema = z.object({
         email: z.string().email(),
@@ -91,8 +95,8 @@ export default function Register() {
                 <div>
                     <h3 className="google_facebook">Regístrarse con Google</h3>
                 </div>
-                <div className="button_auth">
-                    <AuthShowcase />
+                <div className="button_auth" onClick={handleGoogleSignIn}>
+                    {/* <AuthShowcase /> */}
                 </div>
 
             </main>
