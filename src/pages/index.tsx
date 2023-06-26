@@ -31,10 +31,11 @@ export default function Home() {
       </main>
       <footer className="footer">
         <nav className="Navbar">
-          <Link href="/register" className="link">
+          
+          <Link href="/register" className="link" z>
             <p className="NavbarLink">Regístrate</p>
           </Link>
-          <Link href="/login" className="link">
+          <Link href="/login" className="link" passHref>
             <p className="NavbarLink">Iniciar Sesión</p>
           </Link>
         </nav>
