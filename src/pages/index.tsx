@@ -32,7 +32,7 @@ export default function Home() {
       <footer className="footer">
         <nav className="Navbar">
           
-          <Link href="/register" className="link" z>
+          <Link href="/register" className="link" passHref>
             <p className="NavbarLink">Regístrate</p>
           </Link>
           <Link href="/login" className="link" passHref>
