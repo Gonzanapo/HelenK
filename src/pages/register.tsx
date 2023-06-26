@@ -5,10 +5,9 @@ import Router from 'next/router';
 import z from "zod";
 import { useState } from "react";
 import { Sign } from "crypto";
-
-async function handleGoogleSignIn(){
-    signIn("google",{callbackUrl:"/maps"})
-}
+import { handleGoogleSignIn } from "~/components/handleGoogleSignIn";
+import Google from "next-auth/providers/google";
+import { LogoGoogle, Atras } from "../components/image";
 
 export default function Register() {
     const schema = z.object({
@@ -26,7 +25,7 @@ export default function Register() {
         confirmPassword: "",
     });
 
-    const handleChange = (event:any) => {
+    const handleChange = (event: any) => {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({
             ...prevFormData,
@@ -34,7 +33,7 @@ export default function Register() {
         }));
     };
 
-    const handleSubmit = (event:any) => {
+    const handleSubmit = (event: any) => {
         event.preventDefault();
         try {
             schema.parse(formData);
@@ -51,7 +50,8 @@ export default function Register() {
             <header className="top-header">
                 <Link href="/" className="boton_atras">
                     {/* agregar este signo "<"con el id boton_atras_p  */}
-                    <p id="boton_atras_p"></p>
+                    <Atras />
+                    
                 </Link>
             </header>
             <header className="header_register">
@@ -69,24 +69,24 @@ export default function Register() {
                         type="email"
                         name="email"
                         placeholder="Correo Electrónico"
-                        // onChange={handleChange}
+                    // onChange={handleChange}
                     />
                     <input
                         className="input_register"
                         type="password"
                         name="password"
                         placeholder="Contraseña"
-                        // onChange={handleChange}
+                    // onChange={handleChange}
                     />
                     <input
                         className="input_register"
                         type="password"
                         name="confirmPassword"
                         placeholder="Confirma contraseña"
-                        // onChange={handleChange}
+                    // onChange={handleChange}
                     />
                     <br />
-                    <button  type="submit" className="button" >
+                    <button type="submit" className="button" >
                         Regístrate
                     </button>
                 </form>
@@ -95,9 +95,17 @@ export default function Register() {
                 <div>
                     <h3 className="google_facebook">Regístrarse con Google</h3>
                 </div>
-                <div className="button_auth" onClick={handleGoogleSignIn}>
-                    {/* <AuthShowcase /> */}
+                <div className="button_auth"  >
+                    <button className="button_google" onClick={handleGoogleSignIn}>
+
+                        <LogoGoogle />
+                        <h3>
+                            Google
+                        </h3>
+                    </button>
+                    {/* <AuthShowcase />  */}
                 </div>
+
 
             </main>
             <footer className="footer_register">
@@ -110,25 +118,9 @@ export default function Register() {
     );
 }
 
-function AuthShowcase() {
-    const { data: sessionData } = useSession();
 
-    // const handleSignIn = async () => {
-    //     await signIn();
-    //     Router.replace('/maps');
-    // }
 
-    return (
-        <div className="button_auth">
-            <button
-                className="button_google"
-                onClick={sessionData ? () => void signOut() :() => void signIn()}
-            >
-                {sessionData ? "Sign out" : "Registrarse"}
-            </button>
-        </div>
-    );
-}
+// () ? () => void signOut() :() => void signIn()
 
 // ¿No tienes una cuenta? Regístrate
 // ¿Olvidaste tu contraseña?
