@@ -5,6 +5,7 @@ import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import "../styles/initial.css"
 import "../styles/register.css"
+import "../styles/login.css"
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
