@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { handleGoogleSignIn } from "~/components/handleGoogleSignIn";
 import { LogoGoogle, Previous, User, Password, PasswordFill } from "../components/image";
+import { FormRegister } from "~/components/formRegister";
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -43,41 +44,7 @@ export default function Register() {
                 </h2>
             </header>
             <main className="main_register">
-                <form className="form_register" onSubmit={handleSubmit}>
-                    <div className="input_register">
-                        <User  />
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Correo Electrónico"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="input_register">
-                    <Password />
-                        <input
-                            
-                            type="password"
-                            name="password"
-                            placeholder="Contraseña"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="input_register">
-                        <PasswordFill />
-                        <input
-                            
-                            type="password"
-                            name="confirmPassword"
-                            placeholder="Confirma contraseña"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <br />
-                    <button type="submit" className="button">
-                        Regístrate
-                    </button>
-                </form>
+                <FormRegister />
             </main>
             <main className="bottom-main-register">
                 <div>

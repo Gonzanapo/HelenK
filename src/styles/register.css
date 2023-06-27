@@ -95,7 +95,6 @@ html {
 .input_register {
   width: 100%;
   padding: 1em;
-  margin-bottom: 10px;
   border-radius: 15px;
   border: 1px solid #696973;
   font-size: 15px;
@@ -208,3 +207,11 @@ html {
   color: #7c7a81;
 }
 
+.errors
+{
+  margin: 0 0 10px 15px;
+  text-align: left;
+  width: 100%;
+  font-size: 12px;
+  color: red;
+}
