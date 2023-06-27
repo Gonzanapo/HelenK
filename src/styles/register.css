@@ -17,6 +17,11 @@ html {
 
    
 }
+.mainForm
+{
+  width: 100%;
+}
+
 .top-header {
   display: flex;
   justify-content: flex-start;
@@ -99,6 +104,7 @@ html {
   border: 1px solid #696973;
   font-size: 15px;
   display: flex;
+  margin-top: 10px;
 }
 .input_register input {
   margin: 0 20px;

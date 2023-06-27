@@ -3,6 +3,7 @@ import { useState } from "react";
 import { handleGoogleSignIn } from "~/components/handleGoogleSignIn";
 import { LogoGoogle, Previous, User, Password, PasswordFill } from "../components/image";
 import { FormRegister } from "~/components/formRegister";
+import { tabWidth } from "prettier.config.cjs";
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -43,7 +44,7 @@ export default function Register() {
                     Gracias por elegirnos.
                 </h2>
             </header>
-            <main className="main_register">
+            <main className="mainForm">
                 <FormRegister />
             </main>
             <main className="bottom-main-register">

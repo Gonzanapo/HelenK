@@ -5,6 +5,8 @@ import type { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { User, Password } from "./image";
 
+
+
 type FormData = {
   email: string;
   password: string;
@@ -30,11 +32,28 @@ export function FormRegister() {
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
-
-  const submitData: SubmitHandler<FormData> = (data) => {
+  const submitData: SubmitHandler<FormData> = async (data) => {
     console.log(data);
-    // Aquí puedes realizar cualquier lógica adicional
+    window.location.href ="/maps"
+    // Enviar los datos del formulario a la ruta API
+    const response = await fetch('/api/submit-form', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+  
+    // Verificar si la solicitud fue exitosa
+    if (response.ok) {
+      // La solicitud fue exitosa
+      // Aquí puedes manejar el caso de éxito como prefieras
+    } else {
+      // Ocurrió un error al enviar la solicitud
+      // Aquí puedes manejar el caso de error como prefieras
+    }
   };
+  
 
   return (
     <div className="main_register">
@@ -83,7 +102,9 @@ export function FormRegister() {
           <span className="errors">{errors.confirmPassword.message}</span>
         )}
         <br />
-        <button type="submit" className="button">
+    
+        <button type="submit" className="button"  >
+          
           Regístrate
         </button>
       </form>
