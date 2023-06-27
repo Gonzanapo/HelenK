@@ -56,58 +56,70 @@ export function FormRegister() {
   
 
   return (
-    <div className="main_register">
-      <form
-        className="form_register"
-        onSubmit={(e) => {
-          handleSubmit(submitData)(e).catch((error) => {
-            // Aquí puedes manejar el error
-            console.error(error);
-          });
-        }}
-      >
-        <div className="input_register">
-          <User />
-          <input
-            type="email"
-            {...register("email")}
-            name="email"
-            placeholder="Correo Electrónico"
-            // onChange={handleChange}
-          />
-        </div>
-        {errors.email && <span className="errors">{errors.email.message}</span>}
-        <div className="input_register">
-          <Password />
-          <input
-            type="password"
-            {...register("password")}
-            name="password"
-            placeholder="Contraseña"
-          />
-        </div>
-        {errors.password && (
-          <span className="errors">{errors.password.message}</span>
-        )}
-        <div className="input_register">
-          <Password />
-          <input
-            type="password"
-            {...register("confirmPassword")}
-            name="confirmPassword"
-            placeholder="Confirma contraseña"
-          />
-        </div>
-        {errors.confirmPassword && (
-          <span className="errors">{errors.confirmPassword.message}</span>
-        )}
-        <br />
-    
-        <button type="submit" className="button"  >
-          
-          Regístrate
-        </button>
-      </form>
+    <section className="main_register">
+  <form
+    className="form_register"
+    onSubmit={(e) => {
+      handleSubmit(submitData)(e).catch((error) => {
+        // Aquí puedes manejar el error
+        console.error(error);
+      });
+    }}
+  >
+    <div className="input_register">
+      <User />
+      <input
+        type="email"
+        {...register("email")}
+        name="email"
+        id="email"
+        placeholder="Correo Electrónico"
+        alt="Correo Electrónico"
+      />
     </div>
+    {errors.email && (
+      <span className="errors" aria-live="polite">
+        {errors.email.message}
+      </span>
+    )}
+    <div className="input_register">
+      <Password />
+      <input
+        type="password"
+        {...register("password")}
+        name="password"
+        id="password"
+        placeholder="Contraseña"
+        alt="Contraseña"
+      />
+    </div>
+    {errors.password && (
+      <span className="errors" aria-live="polite">
+        {errors.password.message}
+      </span>
+    )}
+    <div className="input_register">
+      <Password />
+      <input
+        type="password"
+        {...register("confirmPassword")}
+        name="confirmPassword"
+        id="confirmPassword"
+        placeholder="Confirma contraseña"
+        alt="Confirma contraseña"
+      />
+    </div>
+    {errors.confirmPassword && (
+      <span className="errors" aria-live="polite">
+        {errors.confirmPassword.message}
+      </span>
+    )}
+    <br />
+
+    <button type="submit" className="button">
+      Regístrate
+    </button>
+  </form>
+</section>
   );
 }
