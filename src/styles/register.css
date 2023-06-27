@@ -97,8 +97,12 @@ html {
   padding: 1em;
   margin-bottom: 10px;
   border-radius: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #696973;
   font-size: 15px;
+  display: flex;
+}
+.input_register input {
+  margin: 0 20px;
 }
 
 .button {
@@ -108,7 +112,6 @@ html {
   border: none;
   border-radius: 25px;
   color: black;
-  font-weight: bold;
   cursor: pointer;
   font-weight: 500;
 }
@@ -204,3 +207,4 @@ html {
   font-weight: 500;
   color: #7c7a81;
 }
+

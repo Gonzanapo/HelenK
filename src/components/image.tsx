@@ -8,6 +8,15 @@ export const LogoGoogle: React.FC = () => {
     return <Image src="/images/google.png" width={25} height={25} alt="google" className="logoGoogle" />
 }
 
-export const Atras: React.FC = () => {
-    return <Image src="/images/previous_white.png" width={30} height={30} alt="previous" className="previous" />
+export const Previous: React.FC = () => {
+    return <Image src="/images/previousWhite.png" width={30} height={1} alt="previous" className="previous" />
+}
+
+
+export const User: React.FC = () => {
+    return <Image src="/images/user.png" width={25} height={20} alt="previous" className="previous" />
+}
+
+export const Password: React.FC = () => {
+    return <Image src="/images/padlock.png" width={25} height={25} alt="previous" className="previous" />
 }
