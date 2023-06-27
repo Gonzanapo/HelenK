@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { handleGoogleSignIn } from "~/components/handleGoogleSignIn";
-import { LogoGoogle, Previous, User, Password } from "../components/image";
+import { LogoGoogle, Previous, User, Password, PasswordFill } from "../components/image";
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -64,7 +64,7 @@ export default function Register() {
                         />
                     </div>
                     <div className="input_register">
-                        <Password />
+                        <PasswordFill />
                         <input
                             
                             type="password"

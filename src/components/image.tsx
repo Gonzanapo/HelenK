@@ -14,9 +14,13 @@ export const Previous: React.FC = () => {
 
 
 export const User: React.FC = () => {
-    return <Image src="/images/user.png" width={25} height={20} alt="previous" className="previous" />
+    return <Image src="/images/user.png" width={25} height={25} alt="previous" className="previous" />
+}
+
+export const PasswordFill: React.FC = () => {
+    return <Image src="/images/padlock.png" width={25} height={25} alt="previous" className="previous" />
 }
 
 export const Password: React.FC = () => {
-    return <Image src="/images/padlock.png" width={25} height={25} alt="previous" className="previous" />
+    return <Image src="/images/padlockWhite.png" width={25} height={25} alt="previous" className="previous" />
 }
