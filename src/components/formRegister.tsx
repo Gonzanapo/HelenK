@@ -1,14 +1,9 @@
-import { z, ZodType } from "zod";
+import type { ZodType } from "zod";
+import { z } from "zod";
 import { useForm } from "react-hook-form";
+import type { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  LogoGoogle,
-  Previous,
-  User,
-  Password,
-  PasswordFill,
-} from "./image";
-
+import { User, Password } from "./image";
 
 type FormData = {
   email: string;
@@ -32,15 +27,26 @@ export function FormRegister() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
 
-  const submitData = (data: FormData) => {
-    console.log("IT WORKED", data);
+  const submitData: SubmitHandler<FormData> = (data) => {
+    console.log(data);
+    // Aquí puedes realizar cualquier lógica adicional
   };
 
   return (
     <div className="main_register">
-      <form className="form_register" onSubmit={handleSubmit(submitData)}>
+      <form
+        className="form_register"
+        onSubmit={(e) => {
+          handleSubmit(submitData)(e).catch((error) => {
+            // Aquí puedes manejar el error
+            console.error(error);
+          });
+        }}
+      >
         <div className="input_register">
           <User />
           <input
@@ -49,9 +55,9 @@ export function FormRegister() {
             name="email"
             placeholder="Correo Electrónico"
             // onChange={handleChange}
-            />
+          />
         </div>
-            {errors.email && <span className="errors"> {errors.email.message}</span>}
+        {errors.email && <span className="errors">{errors.email.message}</span>}
         <div className="input_register">
           <Password />
           <input
@@ -61,7 +67,9 @@ export function FormRegister() {
             placeholder="Contraseña"
           />
         </div>
-          {errors.password && <span className="errors"> {errors.password.message}</span>}
+        {errors.password && (
+          <span className="errors">{errors.password.message}</span>
+        )}
         <div className="input_register">
           <Password />
           <input
@@ -71,7 +79,9 @@ export function FormRegister() {
             placeholder="Confirma contraseña"
           />
         </div>
-          {errors.confirmPassword && <span  className="errors"> {errors.confirmPassword.message}</span>}
+        {errors.confirmPassword && (
+          <span className="errors">{errors.confirmPassword.message}</span>
+        )}
         <br />
         <button type="submit" className="button">
           Regístrate
@@ -80,4 +90,3 @@ export function FormRegister() {
     </div>
   );
 }
-
