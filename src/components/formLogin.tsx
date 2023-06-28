@@ -1,4 +1,5 @@
-import { z, ZodType } from "zod";
+import z from "zod";
+import type { ZodType } from "zod";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -30,47 +31,64 @@ export function FormLogin() {
 
   const [isLoading, setIsLoading] = useState(false); // State variable for loading state
 
-  const submitData: SubmitHandler<FormData> = async (data) => {
+
+  const submitData: SubmitHandler<FormData> = (data) => {
     console.log(data);
 
     // Perform validation or authentication logic here
     try {
       setIsLoading(true); // Set loading state to true
 
-      const response = await fetch("/api/login", {
+      fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        // Login successful
-        alert("Login successful!");
-        window.location.href = "/maps";
-      } else if (response.status === 404) {
-        // Email not found
-        alert("Email does not exist. Please enter a valid email.");
-      } else if (response.status === 401) {
-        // Incorrect password
-        alert("Incorrect password. Please enter the correct password.");
-      } else {
-        // Other error occurred
-        alert("An error occurred. Please try again later.");
-      }
+      })
+        .then((response) => {
+          if (response.ok) {
+            // Login successful
+            alert("Login successful!");
+            window.location.href = "/maps";
+          } else if (response.status === 404) {
+            // Email not found
+            alert("Email does not exist. Please enter a valid email.");
+          } else if (response.status === 401) {
+            // Incorrect password
+            alert("Incorrect password. Please enter the correct password.");
+          } else {
+            // Other error occurred
+            alert("An error occurred. Please try again later.");
+          }
+        })
+        .catch((error) => {
+          // Network error occurred
+          console.error(error);
+          alert("A network error occurred. Please try again later.");
+        })
+        .finally(() => {
+          setIsLoading(false); // Set loading state back to false
+        });
     } catch (error) {
       // Network error occurred
       console.error(error);
       alert("A network error occurred. Please try again later.");
-    } finally {
-      setIsLoading(false); // Set loading state back to false
     }
   };
 
   return (
     <section className="main_login">
-      <form className="form_login" onSubmit={handleSubmit(submitData)}>
+      <form
+        className="form_login"
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleSubmit(submitData)(event).catch((error) => {
+            // Handle any errors that may occur
+            console.error(error);
+          });
+        }}
+      >
         <div className="input_login">
           <User />
           <input
@@ -107,7 +125,11 @@ export function FormLogin() {
         <br />
 
         <button type="submit" className="button" disabled={isLoading}>
-          {isLoading ? "Recargando" : "Inicia Sesión"}
+          {isLoading ? (
+            <div className="loading-animation"></div>
+          ) : (
+            "Inicia Sesión"
+          )}
         </button>
       </form>
     </section>

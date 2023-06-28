@@ -32,6 +32,7 @@ export function FormRegister() {
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
+  
   const submitData: SubmitHandler<FormData> = async (data) => {
     console.log(data);
     window.location.href ="/maps"

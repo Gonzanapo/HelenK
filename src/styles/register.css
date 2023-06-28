@@ -109,6 +109,7 @@ html {
 
 .input_register input {
   margin: 0 20px;
+  width: 100%;
 }
 
 .button {
@@ -120,10 +121,6 @@ html {
   color: black;
   cursor: pointer;
   font-weight: 500;
-}
-
-.button:hover {
-  background-color: #b3b3b3;
 }
 
 .bottom-main-register {
