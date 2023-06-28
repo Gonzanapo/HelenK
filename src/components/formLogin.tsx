@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { User, Password } from "./image";
+import { useState } from "react";
 
 type FormData = {
   email: string;
@@ -27,11 +28,15 @@ export function FormLogin() {
     resolver: zodResolver(schema),
   });
 
+  const [isLoading, setIsLoading] = useState(false); // State variable for loading state
+
   const submitData: SubmitHandler<FormData> = async (data) => {
     console.log(data);
 
     // Perform validation or authentication logic here
     try {
+      setIsLoading(true); // Set loading state to true
+
       const response = await fetch("/api/login", {
         method: "POST",
         headers: {
@@ -43,7 +48,7 @@ export function FormLogin() {
       if (response.ok) {
         // Login successful
         alert("Login successful!");
-        window.location.href ="/maps"
+        window.location.href = "/maps";
       } else if (response.status === 404) {
         // Email not found
         alert("Email does not exist. Please enter a valid email.");
@@ -58,13 +63,15 @@ export function FormLogin() {
       // Network error occurred
       console.error(error);
       alert("A network error occurred. Please try again later.");
+    } finally {
+      setIsLoading(false); // Set loading state back to false
     }
   };
 
   return (
-    <section className="main_register">
-      <form className="form_register" onSubmit={() => handleSubmit(submitData)}>
-        <div className="input_register">
+    <section className="main_login">
+      <form className="form_login" onSubmit={handleSubmit(submitData)}>
+        <div className="input_login">
           <User />
           <input
             type="email"
@@ -80,7 +87,7 @@ export function FormLogin() {
             {errors.email.message}
           </span>
         )}
-        <div className="input_register">
+        <div className="input_login">
           <Password />
           <input
             type="password"
@@ -99,8 +106,8 @@ export function FormLogin() {
 
         <br />
 
-        <button type="submit" className="button">
-          Inicia Sesión
+        <button type="submit" className="button" disabled={isLoading}>
+          {isLoading ? "Recargando" : "Inicia Sesión"}
         </button>
       </form>
     </section>
