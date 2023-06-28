@@ -5,6 +5,7 @@ import type { SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { User, Password } from "./image";
 import { useState } from "react";
+import Link from "next/link";
 
 type FormData = {
   email: string;
@@ -14,10 +15,10 @@ type FormData = {
 export function FormLogin() {
   const schema: ZodType<FormData> = z.object({
     email: z.string().email({
-      message: "Please enter a valid email address",
+      message: "Por favor ingrese un correo electrónico válido",
     }),
     password: z.string().min(5, {
-      message: "Password should be at least 5 characters long",
+      message: "La contraseña debe tener al menos 5 caracteres",
     }),
   });
 
@@ -30,6 +31,7 @@ export function FormLogin() {
   });
 
   const [isLoading, setIsLoading] = useState(false); // State variable for loading state
+  const [errorMessage, setErrorMessage] = useState("");
 
 
   const submitData: SubmitHandler<FormData> = (data) => {
@@ -49,23 +51,23 @@ export function FormLogin() {
         .then((response) => {
           if (response.ok) {
             // Login successful
-            alert("Login successful!");
+
             window.location.href = "/maps";
           } else if (response.status === 404) {
             // Email not found
-            alert("Email does not exist. Please enter a valid email.");
+            setErrorMessage("Email does not exist. Please enter a valid email.");
           } else if (response.status === 401) {
             // Incorrect password
-            alert("Incorrect password. Please enter the correct password.");
+            setErrorMessage("Incorrect password. Please enter the correct password.");
           } else {
             // Other error occurred
-            alert("An error occurred. Please try again later.");
+            setErrorMessage("An error occurred. Please try again later.");
           }
         })
         .catch((error) => {
           // Network error occurred
           console.error(error);
-          alert("A network error occurred. Please try again later.");
+          setErrorMessage("A network error occurred. Please try again later.");;
         })
         .finally(() => {
           setIsLoading(false); // Set loading state back to false
@@ -78,7 +80,9 @@ export function FormLogin() {
   };
 
   return (
+
     <section className="main_login">
+
       <form
         className="form_login"
         onSubmit={(event) => {
@@ -100,11 +104,19 @@ export function FormLogin() {
             alt="Correo Electrónico"
           />
         </div>
-        {errors.email && (
-          <span className="errors" aria-live="polite">
-            {errors.email.message}
-          </span>
-        )}
+        <div className="errors">
+          {errors.email && (
+            <span className="" aria-live="polite">
+              {errors.email.message}
+            </span>
+          )}
+        </div>
+        <div className="errors">
+          {errorMessage && (
+            <span className="errors_messages">{errorMessage}</span>
+          )}
+        </div>
+
         <div className="input_login">
           <Password />
           <input
@@ -116,11 +128,14 @@ export function FormLogin() {
             alt="Contraseña"
           />
         </div>
+        <div className="errors">
+
         {errors.password && (
-          <span className="errors" aria-live="polite">
+          <span className="" aria-live="polite">
             {errors.password.message}
           </span>
         )}
+        </div>
 
         <br />
 
@@ -132,6 +147,10 @@ export function FormLogin() {
           )}
         </button>
       </form>
+      <Link href="/register">
+        <p className=" underline-offset-[3px] active:underline m-2">¿Olvidaste tu constraseña?</p>
+      </Link>
+
     </section>
   );
 }

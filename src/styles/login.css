@@ -88,6 +88,8 @@ html {
   flex-direction: column;
   width: 100%;
   align-items: center;
+  position: relative;
+
 }
 
 .input_container {
@@ -104,7 +106,7 @@ html {
   border: 1px solid #696973;
   font-size: 15px;
   display: flex;
-  margin-top: 10px;
+  margin: 20px 0 0 0;
 }
 
 .input_login input {
@@ -223,6 +225,18 @@ html {
   width: 100%;
   font-size: 12px;
   color: red;
+}
+
+.errors_messages{
+  margin: 0 0 0 15px;
+  text-align: left;
+  width: 100%;
+  font-size: 12px;
+  color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 @keyframes loading {
