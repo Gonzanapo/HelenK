@@ -89,7 +89,6 @@ html {
   width: 100%;
   align-items: center;
   position: relative;
-
 }
 
 .input_container {
@@ -127,8 +126,8 @@ html {
 }
 
 .button:active {
-  transform: scale(0.99); /* Add this line */
-  background-color: #e6e6e6; /* Add this line */
+  transform: scale(0.99);
+  background-color: #e6e6e6;
 }
 
 .bottom-main-login {
@@ -151,8 +150,6 @@ html {
   cursor: pointer;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
-  /* margin-bottom: 10px; */
 }
 
 .button_google h3 {
@@ -212,30 +209,44 @@ html {
 
 .google_facebook {
   font-size: 12px;
-  align-items: center;  
+  align-items: center;
   height: 5vh;
   display: flex;
   font-weight: 500;
   color: #7c7a81;
 }
 
-.link_contra{
+.link_contra {
   margin-top: 10px;
   color: #7c7a81;
   font-size: 12px;
   text-decoration: none;
   cursor: pointer;
-
 }
 
-.errors {   
+.separador {
+  width: 100%;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 1px;
+  background-color: black;
+  margin: 0 8px;
+  width: 100%;
+}
+
+.errors {
   text-align: left;
   width: 100%;
   font-size: 12px;
-  color: #D50000;
+  color: #d50000;
 }
 
-.errors_messages{
+.errors_messages {
   margin: 0 0 0 15px;
   text-align: left;
   width: 100%;

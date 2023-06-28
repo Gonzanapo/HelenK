@@ -143,7 +143,6 @@ export function FormLogin() {
           <p className="link_contra">¿Olvidaste tu constraseña?</p>
         </Link>
       </form>
-
     </section>
   );
 }

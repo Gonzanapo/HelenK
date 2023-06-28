@@ -25,6 +25,12 @@ export default function Register() {
       <main className="mainForm">
         <FormLogin />
       </main>
+    <div className="separador">
+      <div className="separator">
+        <span className="linea-o bg-white p-2">o</span>
+      </div>
+    </div>
+     
       <main className="bottom-main-register">
         <div>
           <h3 className="google_facebook">Iniciar Sesión con Google</h3>
