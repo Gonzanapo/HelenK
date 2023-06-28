@@ -109,9 +109,7 @@ export function FormLogin() {
               {errors.email.message}
             </span>
           )}
-          {errorMessage && (
-            <span className="errors_messages">{errorMessage}</span>
-          )}
+          
 
         <div className="input_login">
           <Password />
@@ -129,7 +127,9 @@ export function FormLogin() {
               {errors.password.message}
             </span>
           )}
-        
+          {errorMessage && (
+            <span className="errors">{errorMessage}</span>
+          )}
         <br />
 
         <button type="submit" className="button" disabled={isLoading}>
