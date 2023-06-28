@@ -63,7 +63,7 @@ export function FormLogin() {
 
   return (
     <section className="main_register">
-      <form className="form_register" onSubmit={handleSubmit(submitData)}>
+      <form className="form_register" onSubmit={() => handleSubmit(submitData)}>
         <div className="input_register">
           <User />
           <input
