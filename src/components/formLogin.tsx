@@ -67,7 +67,7 @@ export function FormLogin() {
         .catch((error) => {
           // Network error occurred
           console.error(error);
-          setErrorMessage("A network error occurred. Please try again later.");;
+          setErrorMessage("A network error occurred. Please try again later.");
         })
         .finally(() => {
           setIsLoading(false); // Set loading state back to false
