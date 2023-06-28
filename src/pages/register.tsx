@@ -6,29 +6,7 @@ import { FormRegister } from "~/components/formRegister";
 import { tabWidth } from "prettier.config.cjs";
 
 export default function Register() {
-    const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-        confirmPassword: ""
-    });
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value
-        }));
-    };
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        try {
-            // Validate form data
-        } catch (error) {
-            // Handle validation error
-        }
-    };
-
+ 
     return (
         <div className="contenedor_register">
             <header className="top-header">
