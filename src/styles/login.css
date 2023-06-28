@@ -228,11 +228,11 @@ html {
 
 }
 
-.errors {
+.errors {   
   text-align: left;
   width: 100%;
   font-size: 12px;
-  color: red;
+  color: #D50000;
 }
 
 .errors_messages{
