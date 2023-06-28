@@ -212,7 +212,7 @@ html {
 
 .google_facebook {
   font-size: 12px;
-  align-items: center;
+  align-items: center;  
   height: 5vh;
   display: flex;
   font-weight: 500;
@@ -220,7 +220,6 @@ html {
 }
 
 .errors {
-  margin: 0 0 10px 15px;
   text-align: left;
   width: 100%;
   font-size: 12px;

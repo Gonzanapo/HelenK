@@ -104,18 +104,14 @@ export function FormLogin() {
             alt="Correo Electrónico"
           />
         </div>
-        <div className="errors">
           {errors.email && (
-            <span className="" aria-live="polite">
+            <span className="errors" aria-live="polite">
               {errors.email.message}
             </span>
           )}
-        </div>
-        <div className="errors">
           {errorMessage && (
             <span className="errors_messages">{errorMessage}</span>
           )}
-        </div>
 
         <div className="input_login">
           <Password />
@@ -128,15 +124,12 @@ export function FormLogin() {
             alt="Contraseña"
           />
         </div>
-        <div className="errors">
-
-        {errors.password && (
-          <span className="" aria-live="polite">
-            {errors.password.message}
-          </span>
-        )}
-        </div>
-
+          {errors.password && (
+            <span className="errors" aria-live="polite">
+              {errors.password.message}
+            </span>
+          )}
+        
         <br />
 
         <button type="submit" className="button" disabled={isLoading}>
@@ -146,10 +139,10 @@ export function FormLogin() {
             "Inicia Sesión"
           )}
         </button>
+        <Link href="/register">
+          <p className=" underline-offset-[3px] active:underline m-2">¿Olvidaste tu constraseña?</p>
+        </Link>
       </form>
-      <Link href="/register">
-        <p className=" underline-offset-[3px] active:underline m-2">¿Olvidaste tu constraseña?</p>
-      </Link>
 
     </section>
   );
