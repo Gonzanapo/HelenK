@@ -140,7 +140,7 @@ export function FormLogin() {
           )}
         </button>
         <Link href="/register">
-          <p className=" underline-offset-[3px] active:underline m-2">¿Olvidaste tu constraseña?</p>
+          <p className="link_contra">¿Olvidaste tu constraseña?</p>
         </Link>
       </form>
 

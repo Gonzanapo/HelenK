@@ -219,6 +219,15 @@ html {
   color: #7c7a81;
 }
 
+.link_contra{
+  margin-top: 10px;
+  color: #7c7a81;
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
 .errors {
   text-align: left;
   width: 100%;
