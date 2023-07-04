@@ -32,7 +32,7 @@ export function FormLogin() {
 
   const [isLoading, setIsLoading] = useState(false); // State variable for loading state
   const [errorMessage, setErrorMessage] = useState("");
-
+  const [errorEmail, setErrorEmail] = useState("");
 
   const submitData: SubmitHandler<FormData> = (data) => {
     console.log(data);
@@ -40,25 +40,41 @@ export function FormLogin() {
     // Perform validation or authentication logic here
     try {
       setIsLoading(true); // Set loading state to true
+      setErrorMessage(""); // Clear any previous error messages
+      setErrorEmail("")
 
-      fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
+      // Check if email exists in database
+      fetch("/api/check-email?email=" + data.email)
         .then((response) => {
           if (response.ok) {
-            // Login successful
-
-            window.location.href = "/maps";
+            // Email found, submit login form
+            fetch("/api/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            })
+              .then((response) => {
+                if (response.ok) {
+                  // Login successful
+                  window.location.href = "/maps";
+                } else if (response.status === 401) {
+                  // Incorrect password
+                  setErrorMessage("Incorrect password. Please enter the correct password.");
+                } else {
+                  // Other error occurred
+                  setErrorMessage("An error occurred. Please try again later.");
+                }
+              })
+              .catch((error) => {
+                // Network error occurred
+                console.error(error);
+                setErrorMessage("A network error occurred. Please try again later.");
+              });
           } else if (response.status === 404) {
             // Email not found
-            setErrorMessage("Email does not exist. Please enter a valid email.");
-          } else if (response.status === 401) {
-            // Incorrect password
-            setErrorMessage("Incorrect password. Please enter the correct password.");
+            setErrorEmail("El Email no existe o no estás registrado. Por Favor ingresa un email valido.");
           } else {
             // Other error occurred
             setErrorMessage("An error occurred. Please try again later.");
@@ -83,7 +99,7 @@ export function FormLogin() {
 
     <section className="main_login">
 
-      <form
+      <form 
         className="form_login"
         onSubmit={(event) => {
           event.preventDefault();
@@ -104,9 +120,9 @@ export function FormLogin() {
             alt="Correo Electrónico"
           />
         </div>
-          {errors.email && (
+          {errorEmail && (
             <span className="errors" aria-live="polite">
-              {errors.email.message}
+              {errorEmail}
             </span>
           )}
           
