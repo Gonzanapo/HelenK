@@ -74,7 +74,7 @@ export function FormLogin() {
               });
           } else if (response.status === 404) {
             // Email not found
-            setErrorEmail("El Email no existe o no estás registrado. Por Favor ingresa un email valido.");
+            setErrorEmail("El Email no existe o no estás registrado. Por favor ingresa un email valido.");
           } else {
             // Other error occurred
             setErrorMessage("An error occurred. Please try again later.");
