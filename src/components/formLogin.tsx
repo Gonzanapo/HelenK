@@ -74,7 +74,7 @@ export function FormLogin() {
               });
           } else if (response.status === 404) {
             // Email not found
-            setErrorEmail("El Email no existe o no estás registrado. Por favor ingresa un email valido.");
+            setErrorEmail("El Email no existe o no estás registrado. Por Favor ingresa un email valido.");
           } else {
             // Other error occurred
             setErrorMessage("An error occurred. Please try again later.");
@@ -99,7 +99,7 @@ export function FormLogin() {
 
     <section className="main_login">
 
-      <form 
+      <form
         className="form_login"
         onSubmit={(event) => {
           event.preventDefault();
@@ -120,12 +120,12 @@ export function FormLogin() {
             alt="Correo Electrónico"
           />
         </div>
-          {errorEmail && (
-            <span className="errors" aria-live="polite">
-              {errorEmail}
-            </span>
-          )}
-          
+        {errorEmail && (
+          <span className="errors" aria-live="polite">
+            {errorEmail}
+          </span>
+        )}
+
 
         <div className="input_login">
           <Password />
@@ -138,14 +138,14 @@ export function FormLogin() {
             alt="Contraseña"
           />
         </div>
-          {errors.password && (
-            <span className="errors" aria-live="polite">
-              {errors.password.message}
-            </span>
-          )}
-          {errorMessage && (
-            <span className="errors">{errorMessage}</span>
-          )}
+        {errors.password && (
+          <span className="errors" aria-live="polite">
+            {errors.password.message}
+          </span>
+        )}
+        {errorMessage && (
+          <span className="errors">{errorMessage}</span>
+        )}
         <br />
 
         <button type="submit" className="button" disabled={isLoading}>
