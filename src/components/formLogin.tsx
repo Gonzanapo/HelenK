@@ -155,7 +155,7 @@ export function FormLogin() {
             "Inicia Sesión"
           )}
         </button>
-        <Link href="/register">
+        <Link href="/restablecer-contrasena">
           <p className="link_contra">¿Olvidaste tu constraseña?</p>
         </Link>
       </form>

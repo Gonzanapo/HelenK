@@ -69,3 +69,10 @@ model MapsHome {
   userId    String
   // user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+model PasswordResetToken {
+  id        Int      @id @default(autoincrement())
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+}
