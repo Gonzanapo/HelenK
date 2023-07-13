@@ -41,16 +41,16 @@ const RecoverPassword: NextPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const largeScreen = useMediaQuery("(min-width: 992px)");
-
+  
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    
     //Validation
-    if (password.length < 5) {
+    if (password.length < 8) {
       setError(true);
       notifications.show({
         title: "Error",
-        message: "La contraseña debe tener al menos 5 caracteres.",
+        message: "La contraseña debe tener al menos 8 caracteres.",
         color: "red",
         autoClose: 5000,
       });
@@ -123,7 +123,7 @@ const RecoverPassword: NextPage = () => {
 
     setIsLoading(false);
     // Redirect the user to the login page or any other desired page
-    await router.push("/login");
+    await router.push("/signIn");
   };
 
   return (

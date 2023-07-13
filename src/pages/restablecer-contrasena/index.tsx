@@ -1,19 +1,11 @@
-import { type NextPage } from "next";
-// import { Logo } from "~/components/Logos/logo";
+import { NextPage } from "next";
+import { ColorSchemeProvider, Button, Autocomplete, Text, Loader, useMantineColorScheme } from "@mantine/core";
 import { useState, useRef } from "react";
-// import { RecoverIMG } from "~/components/Recover/recoverImg";
-import Head from "next/head";
 import { api } from "~/utils/api";
-import { Button } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
-import {
-  Autocomplete,
-  Loader,
-  useMantineColorScheme,
-  Text,
-} from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import Link from "next/link";
+import Head from "next/head";
 
 const Recover: NextPage = () => {
   const { colorScheme } = useMantineColorScheme();
@@ -34,7 +26,7 @@ const Recover: NextPage = () => {
         }
       >
         <div className="absolute ml-5 mt-5 flex items-center gap-2">
-          <Link className="flex flex-row items-center gap-2" href="/" passHref>
+          <Link href="/" passHref>
             {/* <Logo width={40} height={40} /> */}
           </Link>
         </div>
@@ -71,8 +63,6 @@ const Recover: NextPage = () => {
   );
 };
 
-export default Recover;
-
 const RecoverForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -84,7 +74,6 @@ const RecoverForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<string[]>([]);
 
-  
   const handleChange = (val: string) => {
     window.clearTimeout(timeoutRef.current);
     setError(false);
@@ -179,3 +168,11 @@ const RecoverForm: React.FC = () => {
     </form>
   );
 };
+
+const MyApp: NextPage = () => {
+  return (
+      <Recover />
+  );
+};
+
+export default MyApp;
