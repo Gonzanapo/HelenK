@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { ColorSchemeProvider, Button, Autocomplete, Text, Loader, useMantineColorScheme } from "@mantine/core";
+import { ColorSchemeProvider, ColorScheme,  Button, Autocomplete, Text, Loader, useMantineColorScheme } from "@mantine/core";
 import { useState, useRef } from "react";
 import { api } from "~/utils/api";
 import { notifications } from "@mantine/notifications";
@@ -15,7 +15,7 @@ const Recover: NextPage = () => {
     <>
       <Head>
         <title>HelenK</title>
-        <link rel="icon" href="/Logo.ico" />
+        {/* <link rel="icon" href="/Logo.ico" /> */}
         <meta name="description" content="HelenK" />
       </Head>
       <main
@@ -169,10 +169,23 @@ const RecoverForm: React.FC = () => {
   );
 };
 
+
 const MyApp: NextPage = () => {
+  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
+
+  const toggleColorScheme = () => {
+    setColorScheme((prevColorScheme) =>
+      prevColorScheme === 'light' ? 'dark' : 'light'
+    );
+  };
+
   return (
+    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <Recover />
+    </ColorSchemeProvider>
   );
 };
+
+
 
 export default MyApp;
