@@ -58,7 +58,7 @@ export const emailRouter = createTRPCRouter({
 
             //Set mail options
             const mailOptions = {
-                from: 'HelenK <contact.helenk.app@gmail.com>',
+                from: 'HelenK <contact.helenk@gmail.com>',
                 to: email,
                 subject: 'HelenK - Olvidaste tu contraseña',
                 html: recoverPasswordTemplate(emailName, redirectURL),
@@ -90,8 +90,8 @@ export const emailRouter = createTRPCRouter({
     
                 //Set mail options
                 const mailOptions = {
-                    from: 'helenk <contact.helenk.app@gmail.com>',
-                    to: 'helenk <contact.helenk.app@gmail.com>',
+                    from: 'helenk <contact.helenk@gmail.com>',
+                    to: 'helenk <contact.helenk@gmail.com>',
                     subject: subject,
                     html: `<p>De: ${email}</p><p>${message}</p>`,
                 };
