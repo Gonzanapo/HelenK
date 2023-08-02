@@ -58,7 +58,7 @@ export function FormLogin() {
               .then((response) => {
                 if (response.ok) {
                   // Login successful
-                  window.location.href = "/maps";
+                  window.location.href = "/";
                 } else if (response.status === 401) {
                   // Incorrect password
                   setErrorMessage("Incorrect password. Please enter the correct password.");
