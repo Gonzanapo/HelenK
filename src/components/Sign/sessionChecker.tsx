@@ -1,5 +1,6 @@
 import { notifications } from "@mantine/notifications";
 import { useSession } from "next-auth/react";
+
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
@@ -8,6 +9,7 @@ const SessionChecker = () => {
     const router = useRouter();
     
     useEffect(() => {
+      console.log(sessionData)
       const redirectTimeout = setTimeout(() => {
         if (!sessionData) {
           notifications.show({
