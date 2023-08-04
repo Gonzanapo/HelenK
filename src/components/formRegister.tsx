@@ -59,7 +59,7 @@ export function FormRegister() {
       });
 
       if (submitFormResponse.ok) {
-        window.location.href = "/maps";
+        window.location.href = "/";
       } else if (submitFormResponse.status === 401) {
         setErrorMessage("Incorrect password. Please enter the correct password.");
       } else if (submitFormResponse.status === 500) {

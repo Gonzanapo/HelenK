@@ -16,7 +16,7 @@ const SessionChecker = () => {
             color: "red",
             autoClose: 2000,
           });
-          void router.push("/sign");
+          // void router.push("/sign");
         }
       }, 2000);
       return () => clearTimeout(redirectTimeout);
