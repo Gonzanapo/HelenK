@@ -1,65 +1,38 @@
 import { NextPage } from "next";
-import { ColorSchemeProvider, ColorScheme,  Button, Autocomplete, Text, Loader, useMantineColorScheme } from "@mantine/core";
+import { ColorSchemeProvider, ColorScheme, Button, Autocomplete, Text, Loader, useMantineColorScheme } from "@mantine/core";
 import { useState, useRef } from "react";
 import { api } from "~/utils/api";
 import { notifications } from "@mantine/notifications";
 import { useMediaQuery } from "@mantine/hooks";
 import Link from "next/link";
-import Head from "next/head";
 
 const Recover: NextPage = () => {
-  const { colorScheme } = useMantineColorScheme();
-  const largeScreen = useMediaQuery("(min-width: 992px)");
 
   return (
-    <>
-      <Head>
-        <title>HelenK</title>
-        {/* <link rel="icon" href="/Logo.ico" /> */}
-        <meta name="description" content="HelenK" />
-      </Head>
-      <main
-        className={
-          colorScheme === "dark"
-            ? "h-screen w-full bg-[#1C2333]"
-            : "h-screen w-full bg-[#FFFFFF]"
-        }
-      >
-        <div className="absolute ml-5 mt-5 flex items-center gap-2">
+    <div className="full-container">
+      
+      <main className="main">
+        <div className="logo-container">
           <Link href="/" passHref>
             {/* <Logo width={40} height={40} /> */}
           </Link>
         </div>
         <section
-          className={
-            largeScreen
-              ? "flex h-full w-1/2 flex-col items-center justify-center text-center"
-              : "flex h-full w-full flex-col items-center justify-center"
-          }
+          className="section"
         >
           <h1
-            className={
-              colorScheme === "dark"
-                ? "font-family-Inter text-4xl text-white"
-                : "font-family-Inter text-4xl text-black"
-            }
+            className="heading"
           >
             Recuperar Contraseña
           </h1>
-          <h3 className="font-family-Inter text-#AFAFAF">
+          <h3 className="subheading">
             Te enviaremos un mail para recuperarla
           </h3>
           <RecoverForm />
         </section>
-        <picture
-          className={
-            largeScreen ? "absolute right-0 top-0 h-screen w-1/2" : "hidden"
-          }
-        >
-          {/* <RecoverIMG /> */}
-        </picture>
+       
       </main>
-    </>
+  </div>
   );
 };
 
@@ -141,14 +114,13 @@ const RecoverForm: React.FC = () => {
   };
 
   return (
-    <form
-      className="mx-auto mt-8 flex w-full flex-col items-center justify-center text-center"
-      onSubmit={handleSubmit}
-    >
-      <div className="mb-2 w-4/5">
-        <Text fw={500} className="font-family-Inter justify-left flex">
+    
+    <form className="form-container" onSubmit={handleSubmit}>
+     
+      <div className="">
+        <text className="form-label">
           Email
-        </Text>
+        </text>
         <Autocomplete
           {...(error ? { error } : {})}
           value={value}
@@ -156,19 +128,19 @@ const RecoverForm: React.FC = () => {
           onChange={handleChange}
           rightSection={loading ? <Loader size="1rem" /> : null}
           placeholder="Your email"
+          className="form-input"
         />
       </div>
-      <Button
-        className="font-family-Inter mt-3 w-4/5 rounded-lg bg-blue-500 py-2 text-white hover:bg-blue-700"
-        type="submit"
-        loading={isLoading}
-      >
-        Recuperar Contraseña
-      </Button>
+      <button type="submit" className="form-button" disabled={isLoading}>
+          {isLoading ? (
+            <div className="loading-animation"></div>
+          ) : (
+            "Recuperar contraseña"
+          )}
+        </button>
     </form>
   );
 };
-
 
 const MyApp: NextPage = () => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
