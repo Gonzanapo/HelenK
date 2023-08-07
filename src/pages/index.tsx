@@ -5,7 +5,7 @@ export default function Map() {
 
     return(
         <>
-        {/* <SessionChecker /> */}
+        <SessionChecker />
         <div className="contenedor">
             <div className="header">
                 <h1>Mapa</h1>

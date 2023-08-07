@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const SessionChecker = () => {
     const { data: sessionData } = useSession();
     const router = useRouter();
-    
+
     useEffect(() => {
       console.log(sessionData)
       const redirectTimeout = setTimeout(() => {
@@ -18,7 +18,7 @@ const SessionChecker = () => {
             color: "red",
             autoClose: 2000,
           });
-          // void router.push("/sign");
+              void router.push("/sign");
         }
       }, 2000);
       return () => clearTimeout(redirectTimeout);

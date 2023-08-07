@@ -118,9 +118,9 @@ const RecoverForm: React.FC = () => {
     <form className="form-container" onSubmit={handleSubmit}>
      
       <div className="">
-        <text className="form-label">
+        <h2 className="form-label">
           Email
-        </text>
+        </h2>
         <Autocomplete
           {...(error ? { error } : {})}
           value={value}
