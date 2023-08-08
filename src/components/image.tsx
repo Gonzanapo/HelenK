@@ -24,3 +24,7 @@ export const PasswordFill: React.FC = () => {
 export const Password: React.FC = () => {
     return <Image src="/images/padlockWhite.png" width={25} height={25} alt="previous" className="previous" />
 }
+
+export const HelenK: React.FC = () => {
+    return <Image src="/images/HelenK.png" width={70} height={70} alt="HelenK" className="HelenK" />
+}

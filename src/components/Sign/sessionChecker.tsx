@@ -5,11 +5,12 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const SessionChecker = () => {
-    const { data: sessionData } = useSession();
+    const { data: sessionData, status } = useSession();
     const router = useRouter();
 
     useEffect(() => {
       console.log(sessionData)
+      console.log("hola");
       const redirectTimeout = setTimeout(() => {
         if (!sessionData) {
           notifications.show({

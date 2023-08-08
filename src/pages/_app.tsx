@@ -6,7 +6,7 @@ import "~/styles/globals.css";
 import "../styles/initial.css"
 import "../styles/register.css"
 import "../styles/login.css"
-import "../styles/maps.css"
+import "../styles/resetpwd.css"
 import Head from "next/head";
 
 
@@ -21,7 +21,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
       <title>HelenK</title>
       {/* <link rel="icon" href="/Logo.ico" /> */}
       <meta name="description" content="HelenK" />
-    </Head><SessionProvider session={session}>
+      </Head><SessionProvider session={session}>
         <Component {...pageProps} />
       </SessionProvider>
       </>

@@ -1,38 +1,42 @@
 import { NextPage } from "next";
-import { ColorSchemeProvider, ColorScheme, Button, Autocomplete, Text, Loader, useMantineColorScheme } from "@mantine/core";
+import {
+  ColorSchemeProvider,
+  ColorScheme,
+  Button,
+  Autocomplete,
+  Text,
+  Loader,
+  useMantineColorScheme,
+} from "@mantine/core";
 import { useState, useRef } from "react";
 import { api } from "~/utils/api";
 import { notifications } from "@mantine/notifications";
 import { useMediaQuery } from "@mantine/hooks";
 import Link from "next/link";
+import { HelenK, Previous } from "~/components/image";
 
 const Recover: NextPage = () => {
-
   return (
-    <div className="full-container">
-      
-      <main className="main">
-        <div className="logo-container">
-          <Link href="/" passHref>
-            {/* <Logo width={40} height={40} /> */}
-          </Link>
-        </div>
-        <section
-          className="section"
-        >
-          <h1
-            className="heading"
-          >
-            Recuperar Contraseña
-          </h1>
-          <h3 className="subheading">
-            Te enviaremos un mail para recuperarla
+    <div className="full">
+      <header className="top-header">
+        <Link href="/" className="boton_atras" passHref>
+          <Previous />
+        </Link>
+      </header>
+      <header className="header-helenk">
+        <HelenK />
+      </header>
+        <section className="section-resetpwd">
+          <h1 className="heading-resetpwd">Recupera tu contraseña</h1>
+          <h3 className="subheading-resetpwd">
+            Ups. Nos pasa a los mejores. Ingrese su dirección de correo
+            electrónico para solucionar el problema.
           </h3>
-          <RecoverForm />
         </section>
-       
+      <main className="main-resetpwd">
+        <RecoverForm />
       </main>
-  </div>
+    </div>
   );
 };
 
@@ -114,13 +118,9 @@ const RecoverForm: React.FC = () => {
   };
 
   return (
-    
     <form className="form-container" onSubmit={handleSubmit}>
-     
       <div className="">
-        <h2 className="form-label">
-          Email
-        </h2>
+        <h2 className="form-label">Email</h2>
         <Autocomplete
           {...(error ? { error } : {})}
           value={value}
@@ -132,32 +132,33 @@ const RecoverForm: React.FC = () => {
         />
       </div>
       <button type="submit" className="form-button" disabled={isLoading}>
-          {isLoading ? (
-            <div className="loading-animation"></div>
-          ) : (
-            "Recuperar contraseña"
-          )}
-        </button>
+        {isLoading ? (
+          <div className="loading-animation"></div>
+        ) : (
+          "Recupera tu contraseña"
+        )}
+      </button>
     </form>
   );
 };
 
 const MyApp: NextPage = () => {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
+  const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
 
   const toggleColorScheme = () => {
     setColorScheme((prevColorScheme) =>
-      prevColorScheme === 'light' ? 'dark' : 'light'
+      prevColorScheme === "light" ? "dark" : "light"
     );
   };
 
   return (
-    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+    <ColorSchemeProvider
+      colorScheme={colorScheme}
+      toggleColorScheme={toggleColorScheme}
+    >
       <Recover />
     </ColorSchemeProvider>
   );
 };
-
-
 
 export default MyApp;

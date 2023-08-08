@@ -38,18 +38,19 @@ declare module "next-auth" {
  * @see https://next-auth.js.org/configuration/options
  */
 export const authOptions: NextAuthOptions = {
-  callbacks: {
-    jwt: ({ token, user }) => {
-      console.log("JWT callback called with token and user:", token, user);
-      if (user) {
-        token.id = user.id;
-      }
   
-      console.log("Token value:", token);
-      return token;
-    }
+  session: {
+    strategy: "jwt",
   },
-  adapter: PrismaAdapter(prisma),
+  
+  callbacks: {
+    session: async ({ session, token }) => {
+      if (!token.sub) return Promise.reject("No sub in token");
+      session.user.id = token.sub;
+      return Promise.resolve(session);
+    },
+  },
+  adapter: PrismaAdapter( prisma),
   providers: [
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
@@ -90,9 +91,6 @@ export const authOptions: NextAuthOptions = {
     error: "/auth/error", // Error code passed in query string as ?error=
   },
 
-  session: {
-    strategy: "jwt",
-  },
 
 
 

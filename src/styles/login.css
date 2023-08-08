@@ -42,7 +42,7 @@ html {
 }
 
 #boton_atras_p {
-  border: 1px solid #d9d9d9;
+  border: 1px solid #1E293B;
   border-radius: 50%;
   padding: 1rem;
   color: #7c7a81;
@@ -116,10 +116,10 @@ html {
 .button {
   width: 100%;
   padding: 0.5em;
-  background-color: #d9d9d9;
+  background-color: #1E293B;
   border: none;
   border-radius: 25px;
-  color: black;
+  color: #fff;
   cursor: pointer;
   transition: transform 0.4s, background-color 0.3s;
   font-weight: 500;

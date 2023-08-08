@@ -27,7 +27,9 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
-    "**/*.mjs"
+    "**/*.mjs",
+     // Add the file path here
+    //  "./src/pages/dist/_app.js"
   ],
   "exclude": ["node_modules"]
 }

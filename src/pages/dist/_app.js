@@ -28,7 +28,7 @@ require("~/styles/globals.css");
 require("../styles/initial.css");
 require("../styles/register.css");
 require("../styles/login.css");
-require("../styles/maps.css");
+require("../styles/resetpwd.css");
 var head_1 = require("next/head");
 var MyApp = function (_a) {
     var Component = _a.Component, _b = _a.pageProps, session = _b.session, pageProps = __rest(_b, ["session"]);
