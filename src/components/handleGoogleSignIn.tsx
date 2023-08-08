@@ -1,7 +1,7 @@
 import { signIn, useSession } from "next-auth/react";
 
 export function handleGoogleSignIn() {
-  signIn("google", { callbackUrl: "/maps" })
+  signIn("google", { callbackUrl: "/" })
     .then(() => {
       console.log("SignIn completed");
     })

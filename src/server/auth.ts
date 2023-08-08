@@ -39,12 +39,13 @@ declare module "next-auth" {
  */
 export const authOptions: NextAuthOptions = {
   callbacks: {
-
     jwt: ({ token, user }) => {
+      console.log("JWT callback called with token and user:", token, user);
       if (user) {
         token.id = user.id;
       }
-
+  
+      console.log("Token value:", token);
       return token;
     }
   },
@@ -59,18 +60,21 @@ export const authOptions: NextAuthOptions = {
       name: "credentials",
       credentials: {},
       async authorize(credentials) {
+        console.log("Authorize function called with credentials:", credentials);
         const { email, password } = credentials as {
           email: string;
           password: string;
         }
-
+    
         const user = await prisma.user.findUnique({
           where: {
             email,
           },
         });
+        console.log("User found:", user);
         const hashedPassword = user?.password?.toString() || "";
         const isMatch = await bcrypt.compare(password, hashedPassword);
+        console.log("Password match:", isMatch);
         if (isMatch && user) {
           return user;
         } else {
@@ -78,6 +82,7 @@ export const authOptions: NextAuthOptions = {
         }
       },
     }),
+    
   ],
 
   pages: {

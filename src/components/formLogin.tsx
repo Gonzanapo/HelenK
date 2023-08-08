@@ -35,7 +35,7 @@ export function FormLogin() {
   const [errorEmail, setErrorEmail] = useState("");
 
   const submitData: SubmitHandler<FormData> = (data) => {
-    console.log(data);
+    console.log("Submit function called with data:", data);
 
     // Perform validation or authentication logic here
     try {
@@ -46,6 +46,7 @@ export function FormLogin() {
       // Check if email exists in database
       fetch("/api/check-email?email=" + data.email)
         .then((response) => {
+          console.log("Check email response:", response);
           if (response.ok) {
             // Email found, submit login form
             fetch("/api/login", {
@@ -56,6 +57,7 @@ export function FormLogin() {
               body: JSON.stringify(data),
             })
               .then((response) => {
+                console.log("Login response:", response);
                 if (response.ok) {
                   // Login successful
                   window.location.href = "/";
