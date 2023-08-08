@@ -46,11 +46,11 @@ const RecoverPassword: NextPage = () => {
     e.preventDefault();
     
     //Validation
-    if (password.length < 8) {
+    if (password.length < 5) {
       setError(true);
       notifications.show({
         title: "Error",
-        message: "La contraseña debe tener al menos 8 caracteres.",
+        message: "La contraseña debe tener al menos 5 caracteres.",
         color: "red",
         autoClose: 5000,
       });
@@ -172,7 +172,7 @@ const RecoverPassword: NextPage = () => {
           </Text>
 
           <form
-            onSubmit={handleSubmit}
+            onSubmit={() => void handleSubmit}
             className="mx-auto mt-8 flex w-full flex-col items-center justify-center text-center"
           >
             <div className="mb-2 w-4/5">
