@@ -3,7 +3,6 @@ const path = require("path");
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
-  ignorePatterns: ["dist/"], // Exclude the dist directory
   overrides: [
     {
       extends: [
@@ -11,7 +10,8 @@ const config = {
       ],
       files: ["*.ts", "*.tsx"],
       parserOptions: {
-        project: path.join(__dirname, "tsconfig.json"),
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
       },
     },
   ],
@@ -34,3 +34,4 @@ const config = {
 };
 
 module.exports = config;
+
