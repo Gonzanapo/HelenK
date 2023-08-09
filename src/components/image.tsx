@@ -26,5 +26,5 @@ export const Password: React.FC = () => {
 }
 
 export const HelenK: React.FC = () => {
-    return <Image src="/images/HelenK.png" width={70} height={70} alt="HelenK" className="HelenK" />
+    return <Image src="/images/HelenK.png" width={60} height={60} alt="HelenK" className="HelenK" />
 }

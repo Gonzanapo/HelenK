@@ -13,9 +13,7 @@
   .main-resetpwd {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
-    padding: 10px;
     height: 60vh;
   }
   
@@ -76,7 +74,19 @@
   display: flex;
   margin: 20px 0 0 0;
 }
+.mantine-Autocomplete-wrapper {
+  width: 100%;
+}
+
+.mantine-6kqrk6[data-with-icon]{
+  padding-left: 3rem;
+}
   
+.mantine-1vq8ow9[data-with-icon]
+{
+  padding-left: 3rem;
+}
+
   .form-button {
     width: 100%;
     padding: 0.5em;

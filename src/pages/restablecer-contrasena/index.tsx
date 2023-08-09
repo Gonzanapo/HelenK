@@ -7,7 +7,8 @@ import { useState, useRef } from "react";
 import { api } from "~/utils/api";
 import { notifications } from "@mantine/notifications";
 import Link from "next/link";
-import { HelenK, Previous } from "~/components/image";
+import { HelenK, Previous, User } from "~/components/image";
+
 
 const Recover: NextPage = () => {
   return (
@@ -23,9 +24,9 @@ const Recover: NextPage = () => {
       <section className="section-resetpwd">
         <h1 className="heading-resetpwd">Recupera tu contraseña</h1>
         <h3 className="subheading-resetpwd">
-          Ups. Nos pasa a los mejores.
-          <br />Ingrese su dirección de correo
-          electrónico para solucionar el problema.
+          Ups, nos pasa a los mejores...
+          <br /> Ingrese su dirección de correo
+          electrónico para solucionar el problema:
         </h3>
       </section>
       <main className="main-resetpwd">
@@ -122,21 +123,24 @@ const RecoverForm: React.FC = () => {
   return (
     <form className="form-container" onSubmit={handleSubmit}>
       <div className="email-form">
-        {/* <h2 className="form-label">Email</h2> */}
         <Autocomplete  
           {...(error ? { error } : {})}
           value={value}
           data={data}
           onChange={handleChange}
+          variant="unstyled"
           rightSection={loading ? <Loader size="1rem" /> : null}
-          placeholder="Your email"
+          icon={<User />} 
+          placeholder="Email"
           className="form-input"
+          aria-label="Email"
           
         />
       </div>
       <div className="form-footer">
 
-      <button type="submit" className="form-button" disabled={isLoading}>
+      <button type="submit" className="form-button" disabled={isLoading}
+      >
         {isLoading ? (
           <div className="loading-animation"></div>
         ) : (
@@ -145,6 +149,7 @@ const RecoverForm: React.FC = () => {
       </button>
       </div>
     </form>
+    
   );
 };
 

@@ -172,7 +172,7 @@ const RecoverPassword: NextPage = () => {
           </Text>
 
           <form
-            onSubmit={handleSubmit}
+            // onSubmit={handleSubmit}
             className="mx-auto mt-8 flex w-full flex-col items-center justify-center text-center"
           >
             <div className="mb-2 w-4/5">
