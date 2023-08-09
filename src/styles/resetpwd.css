@@ -88,11 +88,11 @@
 }
 
   .form-button {
-    width: 100%;
+    width: 60%;
     padding: 1rem;
     background-color: #1E293B;
     border: none;
-    border-radius: 25px;
+    border-radius: 5px;
     color: #fff;
     cursor: pointer;
     font-weight: 500;

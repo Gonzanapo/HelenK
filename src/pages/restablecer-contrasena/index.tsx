@@ -144,7 +144,7 @@ const RecoverForm: React.FC = () => {
         {isLoading ? (
           <div className="loading-animation"></div>
         ) : (
-          "Recupera tu contraseña"
+          "Enviar"
         )}
       </button>
       </div>
