@@ -162,17 +162,6 @@ html {
   background-color: #d9d9d9;
 }
 
-.button_facebook {
-  width: 150px;
-  padding: 10px;
-  background-color: #4267b2;
-  border: none;
-  border-radius: 25px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 0 10px;
-}
 
 .button_facebook:hover {
   background-color: #385899;

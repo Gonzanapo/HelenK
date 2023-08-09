@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
-    "**/*.mjs",
+    "**/*.mjs", "src/components/formRecoverPwd",
      // Add the file path here
     //  "./src/pages/dist/_app.js"
   ],
