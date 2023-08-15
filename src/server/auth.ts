@@ -44,11 +44,18 @@ export const authOptions: NextAuthOptions = {
   },
   
   callbacks: {
+    
     session: async ({ session, token }) => {
       if (!token.sub) return Promise.reject("No sub in token");
       session.user.id = token.sub;
       return Promise.resolve(session);
     },
+
+    jwt: ({token, user}) => {
+    user && (token.user = user)
+    return token   
+    }
+
   },
   adapter: PrismaAdapter( prisma),
   providers: [

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import './estilo.css';
-import './normalize.css';
-import './index.css';
+import SessionChecker from '~/components/Sign/sessionChecker';
 
 export default function Mapa() {
     const [position, setPosition] = useState({ lat: 0, lng: 0 });
@@ -25,6 +23,7 @@ export default function Mapa() {
 
     return (
         <div className="Contenedor">
+            <SessionChecker />
             <header className="top-header">
                 {/* Placeholder for the logo */}
                 <a href="#">
