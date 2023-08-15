@@ -28,8 +28,6 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs", "src/components/formRecoverPwd",
-     // Add the file path here
-    //  "./src/pages/dist/_app.js"
   ],
-  "exclude": ["node_modules"]
+    "exclude": ["node_modules"]
 }
