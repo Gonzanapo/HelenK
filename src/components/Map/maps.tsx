@@ -46,7 +46,8 @@ export default function Maps() {
 
 
             <LoadScript
-                googleMapsApiKey="TU_CLAVE_API"
+                googleMapsApiKey="MAPS_KEY"
+                
             >
                 <GoogleMap
                     mapContainerStyle={containerStyle}
