@@ -1,16 +1,13 @@
 import { notifications } from "@mantine/notifications";
 import { useSession } from "next-auth/react";
-
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const SessionChecker = () => {
-    const { data: sessionData, status } = useSession();
+    const { data: sessionData } = useSession();
     const router = useRouter();
-
+    
     useEffect(() => {
-      console.log(sessionData)
-      console.log("hola");
       const redirectTimeout = setTimeout(() => {
         if (!sessionData) {
           notifications.show({
@@ -19,9 +16,9 @@ const SessionChecker = () => {
             color: "red",
             autoClose: 2000,
           });
-              void router.push("/sign");
+          void router.push("/sign");
         }
-      }, 2000);
+      }, 500);
       return () => clearTimeout(redirectTimeout);
     }, [router, sessionData]);
 

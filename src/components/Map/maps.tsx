@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import './estilo.css';
-import './normalize.css';
-import './index.css';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
-export default function Mapa() {
+
+
+const containerStyle = {
+    width: '400px',
+    height: '400px'
+  };
+  
+  const center = {
+    lat: -3.745,
+    lng: -38.523
+  };
+
+
+export default function Maps() {
     const [position, setPosition] = useState({ lat: 0, lng: 0 });
     const [realTime, setRealTime] = useState(null);
     const [circulo, setCirculo] = useState(null);
@@ -24,50 +35,30 @@ export default function Mapa() {
     // ...
 
     return (
-        <div className="Contenedor">
-            <header className="top-header">
-                {/* Placeholder for the logo */}
-                <a href="#">
-                    <div className="marca">
-                        <img src="LOGO.svg" alt="Logo" />
-                    </div>
-                </a>
-            </header>
-            <header className="header">
-                {/* Placeholder for navigation links */}
-                {/* ... */}
-            </header>
-            <main>
-                <div className="maps">
-                    {/* Placeholder for real-time position display */}
-                    <p>
-                        <span id="Pos"></span>
-                    </p>
-                    <div className="commutes">
-                        {/* Placeholder for "Centrar" button */}
-                        <button id="button_commute" onClick={() => {
-                            fullmap.setCenter(new google.maps.LatLng(position.lat, position.lng));
-                            fullmap.setZoom(18);
-                        }}>Centrar</button>
-                        <div className="commutes-map" aria-label="Map" id="Map">
-                            {/* Placeholder for the map view */}
-                            <div className="map-view"></div>
-                        </div>
-                    </div>
+        <div className='Map'>
+            <div className="commutes">
+                <button id="button_commute">Centrar</button>
+                <div className="commutes-map" aria-label="Map" id="Map">
+                    <div className="map-view"></div>
                 </div>
-                {/* Placeholder for Google Maps script */}
-                <br />
-                <br />
-                <br />
-            </main>
-            <footer className="footer">
-                {/* Placeholder for footer content */}
-                {/* ... */}
-            </footer>
-            <footer className="footer-responsive">
-                {/* Placeholder for responsive footer content */}
-                {/* ... */}
-            </footer>
+
+            </div>
+
+
+            <LoadScript
+                googleMapsApiKey="TU_CLAVE_API"
+            >
+                <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={center}
+                    zoom={10}
+                >
+                    {/* Aquí puedes agregar marcadores, polígonos, etc. */}
+                </GoogleMap>
+            </LoadScript>
+
+
         </div>
     );
 }
+
