@@ -16,26 +16,24 @@ export default function Mapa() {
     // ...
 
     return (
-        <div className="Contenedor">
+        <div className="Contenedor-map">
             <SessionChecker />
-            <header className="top-header">
+            <header className="top-header-map">
                 {/* Placeholder for the logo */}
                 <a href="#">
-                    <div className="marca">
+                    <div className="marca-map">
                         {/* <img src="LOGO.svg" alt="Logo" /> */}
                     </div>
                 </a>
             </header>
-            <header className="header">
+            <header className="header-map">
                 {/* Placeholder for navigation links */}
                 {/* ... */}
             </header>
             <main>
-                main
                 <Maps />
             </main>
-            <footer className="footer">
-                HOLA
+            <footer className="footer-map">
                 {/* Placeholder for footer content */}
                 {/* ... */}
             </footer>

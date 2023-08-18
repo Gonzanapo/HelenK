@@ -7,6 +7,7 @@ import "../styles/initial.css";
 import "../styles/register.css";
 import "../styles/login.css";
 import "../styles/resetpwd.css";
+import "../styles/maps.css";
 import Head from "next/head";
 import { MantineProvider, ColorSchemeProvider, type ColorScheme } from "@mantine/core";
 import { useState } from "react";
