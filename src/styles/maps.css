@@ -3,8 +3,20 @@
     position: fixed;
     top: 0;
     left: 0;
+    height: 100%;
+    width: 100%;
 }
 
 #GoogleMap {
-    margin: 10px;
 }
+
+.main-map{
+    background-color: blue;
+    height: 90vh;
+    width: 100%;
+}
+
+.footer-map {
+    height: 6vh;
+  }
+  

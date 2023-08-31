@@ -30,7 +30,7 @@ export default function Mapa() {
                 {/* Placeholder for navigation links */}
                 {/* ... */}
             </header>
-            <main>
+            <main className='main-map'>
                 <Maps />
             </main>
             <footer className="footer-map">
