@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { useSession } from 'next-auth/react';
 
 // Establece el ancho y el alto del componente al 100%
 const containerStyle = {
@@ -35,6 +36,8 @@ export default function Maps() {
   const [coordsUbi, setCoordsUbi] = useState([0, 0]);
   const [semaforos, setSemaforos] = useState(null);
   const [minDistance, setMinDistance] = useState(50000);
+
+  const { data: session } = useSession();
 
   // Crea refs para cada elemento que quieras seleccionar
   const mapViewRef = useRef(null);
@@ -92,6 +95,20 @@ export default function Maps() {
           </LoadScript>
         </div>
       </div>
+      <footer className="footer-maps">
+  {session ? (
+    // Usar un fragmento para envolver los elementos
+    <>
+      <h1>Bienvenido {session.user.name}</h1>
+      <img src={session.user.image || "/default.png"} alt="User image" />
+
+    </>
+  ) : (
+    <h1>Bienvenido Invitado</h1>
+  )}
+</footer>
+
+
     </div>
   );
 }

@@ -17,9 +17,6 @@
     width: 100%;
 }
 
-.footer-map {
-    height: 6vh;
-  }
   
 .button-commute
 {
@@ -68,4 +65,9 @@
     display: flex;
     /* text-align: center;
     justify-content: center; */
+}
+
+.footer-maps
+{
+    z-index: 3;
 }
