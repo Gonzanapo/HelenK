@@ -10,8 +10,8 @@ const containerStyle = {
 };
 
 const center = {
-    lat: -3.745,
-    lng: -38.523
+    lat: -34.564959,
+    lng: -58.450324,
 };
 
 // Define las opciones de mapa
@@ -61,8 +61,12 @@ export default function Maps() {
 
     return (
         <div className='Map'>
+            <div className='buttons-routes'>
+
+            <button className="button-commute"> Seguimiento de Ruta </button>
+            <button className="button-route"> Ruta </button>
+            </div>
             <div className="commutes">
-                <button id="button_commute">Centrar</button>
                 <div className="commutes-map" aria-label="Map" id="Map">
 
                     <LoadScript googleMapsApiKey="AIzaSyBEJtEhY1iMBrrsDlLMUxbzk-bvZrpJHBQ&">
