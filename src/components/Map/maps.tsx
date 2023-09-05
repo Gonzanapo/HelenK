@@ -63,7 +63,7 @@ export default function Maps() {
     <div className="Map">
       <div className="buttons-routes">
         <h2 className="button-commute"> Seguimiento de Ruta </h2>
-        <button className="button-route">
+        <h2 className="button-route">
           <li className="h2-route">
             {" "}
             En camino <br /> <h4 className="h4-route">
@@ -76,7 +76,7 @@ export default function Maps() {
             10. min restantes <br />{" "}
             <h4 className="h4-route"> Llegada 12:55:14 AM </h4>{" "}
           </li>
-        </button>
+        </h2>
       </div>
       <div className="commutes">
         <div className="commutes-map" aria-label="Map" id="Map">
