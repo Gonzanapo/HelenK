@@ -53,6 +53,7 @@
     /* display: flex; */
     margin: auto;
     text-align: left;
+    font-size: 14px;
 }
 
 ::marker {
