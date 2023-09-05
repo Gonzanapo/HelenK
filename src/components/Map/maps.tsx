@@ -68,13 +68,13 @@ export default function Maps() {
             {" "}
             En camino <br /> <h4 className="h4-route">
               {" "}
-              Salida 12:22:45 AM{" "}
+              Salida 12:22:45 {" "}
             </h4>{" "}
           </li>
           <li className="h2-route">
             {" "}
             10. min restantes <br />{" "}
-            <h4 className="h4-route"> Llegada 12:55:14 AM </h4>{" "}
+            <h4 className="h4-route"> Llegada 12:55:14 </h4>{" "}
           </li>
         </h2>
       </div>

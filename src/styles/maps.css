@@ -54,6 +54,7 @@
     margin: auto;
     text-align: left;
     font-size: 14px;
+    padding: 5px;
 }
 
 ::marker {
@@ -64,5 +65,7 @@
 }
 
 .h4-route{
-    margin-left: 0px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
