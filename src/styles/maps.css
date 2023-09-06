@@ -23,7 +23,7 @@
     position: relative;
     z-index: 1;
     margin: auto;
-    background-color: #F95FAE;
+    background-color: #1E293B;
     width: 100%;
     height: 6rem;
     border-radius: 5px 5px 15px 15px;
@@ -67,7 +67,27 @@
     justify-content: center; */
 }
 
-.footer-maps
+.footer-map
 {
     z-index: 3;
+    position: relative;
+    background-color: #746BF7;
+    display: flex;
+    height: 10vh;
+    border-radius: 15px 15px 5px 5px;
+}
+
+.img-user{
+    border-radius: 50%;
+    border: 3px solid #FFC107;
+    margin: auto 10px;
+    padding: 5px;
+    background-color: #FFF;
+}
+
+
+.username{
+    color: #FFF;
+    font-size: 14px;
+    margin: auto 10px;
 }
