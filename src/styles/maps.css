@@ -85,7 +85,9 @@
     background-color: #FFF;
 }
 
-
+#user-real{
+    height: 5vh;
+}
 .username{
     color: #FFF;
     font-size: 14px;

@@ -42,6 +42,7 @@ export default function Mapa() {
           <>
             <img
               className="img-user"
+              id="user-real"
               src={session.user.image || "/HelenK.png"}
               alt="User image"
             />
