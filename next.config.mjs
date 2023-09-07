@@ -1,21 +1,10 @@
-// Mantener la extensión .mjs
-// Importar los tipos usando import() en los comentarios JSDoc
-/**
- * @typedef {import("next").NextConfig} NextConfig
- * @typedef {import("next-pwa").PWAConfig} PWAConfig
- */
-
-// Importar el paquete @types/node para tener el tipo de process
-import process from "process";
-
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
  * for Docker builds.
  */
 await import("./src/env.mjs");
 
-// Usar el tipo NextConfig para la variable config usando JSDoc
-/** @type {NextConfig} */
+/** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
 
@@ -31,18 +20,26 @@ const config = {
   },
 };
 
-const withPWA = require("next-pwa");
-
-// Usar el tipo PWAConfig para el objeto que se le pasa a withPWA usando JSDoc
-// Mover la propiedad pwa fuera del objeto
-/** @type {PWAConfig} */
-const pwaConfig = {
-  // next.js config
-  dest: "public",
-  register: true,
-  skipWaiting: true,
-};
-
-module.exports = withPWA(pwaConfig);
-
 export default config;
+
+////
+
+// const withPWA = require('next-pwa')
+
+// module.exports = withPWA({
+//   // next.js config
+//   reactStrictMode: true,
+//   i18n: {
+//     locales: ["en"],
+//     defaultLocale: "en",
+//   },
+//   // next-pwa config
+//   pwa: {
+//     dest: 'public',
+//     disable: process.env.NODE_ENV === 'development',
+//     register: true,
+//     scope: '/',
+//     sw: 'service-worker.js',
+//     skipWaiting: true,
+//   },
+// })
