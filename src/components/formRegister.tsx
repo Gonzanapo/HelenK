@@ -7,6 +7,7 @@ import { User, Password } from "./image";
 import { useState } from "react";
 
 type FormData = {
+  name:string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -15,6 +16,7 @@ type FormData = {
 export function FormRegister() {
   // Definición del esquema de validación utilizando Zod
   const schema: ZodType<FormData> = z.object({
+    name: z.string(),
     email: z.string().email(),
     password: z.string().min(5).max(20),
     confirmPassword: z.string().min(5).max(20),

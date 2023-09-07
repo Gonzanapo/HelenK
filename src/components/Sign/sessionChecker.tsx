@@ -14,7 +14,7 @@ const SessionChecker = () => {
             title: "Error",
             message: "Debe ingresar a su cuenta primero",
             color: "red",
-            autoClose: 2000,
+            autoClose: 3000,
           });
           void router.push("/sign");
         }
