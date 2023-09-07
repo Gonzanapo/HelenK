@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
-    "**/*.mjs", "src/components/formRecoverPwd",
+    "**/*.mjs", "src/components/formRecoverPwd", "next.config.js",
   ],
     "exclude": ["node_modules"]
 }
