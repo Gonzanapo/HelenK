@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from "react";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
@@ -6,6 +8,7 @@ import Maps from "~/components/Map/maps";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import { useSession } from "next-auth/react";
 import { NotUser } from "~/components/image";
+import Link from "next/link"; // Import Link component from next/link
 
 export default function Mapa() {
   useEffect(() => {
@@ -17,6 +20,14 @@ export default function Mapa() {
   // ...
 
   const { data: session } = useSession();
+
+  // Define state variable and setter function for navbar visibility
+  const [showNavbar, setShowNavbar] = useState(false);
+
+  // Define a function to toggle the navbar visibility
+  const handleFooterClick = () => {
+    setShowNavbar(!showNavbar);
+  };
 
   return (
     <div className="Contenedor-map">
@@ -36,7 +47,11 @@ export default function Mapa() {
       <main className="main-map">
         <Maps />
       </main>
-      <footer className="footer-map">
+      {/* Añade una condición al atributo className del footer */}
+      <footer
+        className={`footer-map ${showNavbar ? "clicked" : ""}`}
+        onClick={handleFooterClick}
+      >
         {session ? (
           // Usar un fragmento para envolver los elementos
           <>
@@ -50,11 +65,23 @@ export default function Mapa() {
           </>
         ) : (
           <>
-              <NotUser/>
+            <NotUser />
             <h1 className="username"> Invitado </h1>
           </>
         )}
       </footer>
+
+      {/* Add a conditional rendering expression for the navbar */}
+      {showNavbar && (
+        <nav className="navbar-map">
+          <Link href="/">
+            <p>Home</p>
+          </Link>
+          <Link href="/link">
+            <p>Link</p>
+          </Link>
+        </nav>
+      )}
     </div>
   );
 }

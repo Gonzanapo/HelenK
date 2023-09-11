@@ -1,12 +1,9 @@
-body {
-    min-height: -webkit-fill-available; 
 
-}
 .map-view{
     position: fixed;
     top: 0;
     left: 0;
-    height: 90lvh;
+    height: 90vh;
     width: 100%; 
 }
 
@@ -17,7 +14,7 @@ body {
 .main-map{
     background-color: blue;
     width: 100%;
-    height: 90lvh;
+    height: 90vh;
 }
 
   
@@ -75,6 +72,18 @@ body {
 }
 
 
+.footer-map.clicked {
+    height: 30vh;
+    transform: translateY(-20vh); 
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+  }
+  
+
+.navbar-map{
+    position: absolute;
+    top: 0;
+}
 
 .footer-map
 {
@@ -82,8 +91,9 @@ body {
     position: relative;
     background-color: #746BF7;
     display: flex;
-    height: 10lvh;
+    height: 10vh;
     border-radius: 15px 15px 0 0;
+    overflow: hidden;
 }
 
 
@@ -96,7 +106,7 @@ body {
 }
 
 #user-real{
-    height: 5lvh;
+    height: 5vh;
 }
 .username{
     color: #FFF;
