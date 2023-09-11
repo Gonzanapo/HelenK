@@ -81,9 +81,16 @@ body{
     height: 30vh;
     transform: translateY(-20vh); 
     transition: all 0.5s ease-in-out;
-    overflow: hidden;
+    overflow: hidden;   
   }
   
+  #user-real.clicked{
+    margin: 10px;
+  }
+  .username.clicked{
+    margin: 10px;
+  }
+
 
 .navbar-map{
     height: 30vh;
@@ -125,4 +132,7 @@ body{
     color: #FFF;
     font-size: 14px;
     margin: auto 10px;
+    height: 5vh;
+    display: flex;
+    align-items: center;
 }

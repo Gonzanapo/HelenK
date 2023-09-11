@@ -49,9 +49,9 @@ export default function Mapa() {
       </main>
       {/* Añade una condición al atributo className del footer */}
 
-       {/* Add a conditional rendering expression for the navbar */}
-       {showNavbar && (
-        <nav  className={`navbar-map ${showNavbar ? "clicked" : ""}`} onClick={handleFooterClick}>
+      {/* Add a conditional rendering expression for the navbar */}
+      {showNavbar && (
+        <nav className={`navbar-map ${showNavbar ? "clicked" : ""}`} onClick={handleFooterClick}>
           <Link href="/">
             <p className="navbar-link">Home</p>
           </Link>
@@ -68,22 +68,24 @@ export default function Mapa() {
           // Usar un fragmento para envolver los elementos
           <>
             <img
-              className="img-user"
+              className={`img-user ${showNavbar ? "clicked" : ""}`}
               id="user-real"
               src={session.user.image || "/HelenK.png"}
               alt="User image"
             />
-            <h1 className="username"> {session.user.name}</h1>
+            <h1 className={`username ${showNavbar ? "clicked" : ""}`}> {session.user.name}</h1>
           </>
         ) : (
           <>
             <NotUser />
-            <h1 className="username"> Invitado </h1>
+            <h1 className={`username ${showNavbar ? "clicked" : ""}`}>
+              Invitado
+            </h1>
           </>
         )}
       </footer>
 
-     
+
     </div>
   );
 }
