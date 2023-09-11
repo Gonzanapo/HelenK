@@ -53,10 +53,10 @@ export default function Mapa() {
       {showNavbar && (
         <nav className={`navbar-map ${showNavbar ? "clicked" : ""}`} onClick={handleFooterClick}>
           <Link href="/">
-            <p className="navbar-link">Home</p>
+            <p className={`navbar-link ${showNavbar ? "clicked" : ""}`}>Home</p>
           </Link>
           <Link href="/link">
-            <p className="navbar-link">Link</p>
+            <p className={`navbar-link ${showNavbar ? "clicked" : ""}`}>Link</p>
           </Link>
         </nav>
       )}
@@ -64,6 +64,7 @@ export default function Mapa() {
         className={`footer-map ${showNavbar ? "clicked" : ""}`}
         onClick={handleFooterClick}
       >
+
         {session ? (
           // Usar un fragmento para envolver los elementos
           <>
