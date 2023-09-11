@@ -1,3 +1,8 @@
+body{
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+}
 
 .map-view{
     position: fixed;
@@ -81,9 +86,17 @@
   
 
 .navbar-map{
+    height: 30vh;
+    transform: translateY(-20vh); 
+    justify-content: space-evenly;
+    width: 100%;
+    color: white;
+    display: flex;
+    z-index: 4;
     position: absolute;
-    top: 0;
+    align-items: center;
 }
+
 
 .footer-map
 {

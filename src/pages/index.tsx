@@ -48,6 +48,18 @@ export default function Mapa() {
         <Maps />
       </main>
       {/* Añade una condición al atributo className del footer */}
+
+       {/* Add a conditional rendering expression for the navbar */}
+       {showNavbar && (
+        <nav  className={`navbar-map ${showNavbar ? "clicked" : ""}`} onClick={handleFooterClick}>
+          <Link href="/">
+            <p className="navbar-link">Home</p>
+          </Link>
+          <Link href="/link">
+            <p className="navbar-link">Link</p>
+          </Link>
+        </nav>
+      )}
       <footer
         className={`footer-map ${showNavbar ? "clicked" : ""}`}
         onClick={handleFooterClick}
@@ -71,17 +83,7 @@ export default function Mapa() {
         )}
       </footer>
 
-      {/* Add a conditional rendering expression for the navbar */}
-      {showNavbar && (
-        <nav className="navbar-map">
-          <Link href="/">
-            <p>Home</p>
-          </Link>
-          <Link href="/link">
-            <p>Link</p>
-          </Link>
-        </nav>
-      )}
+     
     </div>
   );
 }
