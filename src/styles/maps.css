@@ -1,7 +1,6 @@
 body{
     height: 100vh;
     max-height: 100vh;
-    overflow: hidden;
 }
 
 .map-view{
@@ -80,7 +79,7 @@ body{
 .footer-map.clicked {
     height: 30vh;
     transform: translateY(-20vh); 
-    transition: all 0.5s ease-in-out;
+    /* transition: all 0.5s ease-in-out; */
     overflow: hidden;   
   }
   
@@ -139,9 +138,11 @@ body{
 }
 
 .navbar-link.clicked{
-    transition: all 2s ease-in-out;
+    /* transition: all 2s ease-in-out; */
+    color: black;
 }
 
 .navbar-map.clicked{
-    transition: all 2s ease-in-out;
+    /* transition: all 2s ease-in-out; */
+    color: black;
 }
