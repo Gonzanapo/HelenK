@@ -14,11 +14,11 @@ const SessionChecker = () => {
             title: "Error",
             message: "Debe ingresar a su cuenta primero",
             color: "red",
-            autoClose: 3000,
+            autoClose: 5000,
           });
           void router.push("/sign");
         }
-      }, 50000);
+      }, 2000);
       return () => clearTimeout(redirectTimeout);
     }, [router, sessionData]);
 
