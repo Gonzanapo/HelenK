@@ -13,7 +13,20 @@ body{
 
 #GoogleMap {
     margin: auto;
+    
 }
+
+.button-centrar{
+    position: relative;
+    z-index: 1;
+    background-color: #746BF7;
+    padding: 10px;
+    border-radius: 20px;
+    width: 30%;
+    color: #FFF;
+    margin: auto;
+}
+
 
 .main-map{
     background-color: blue;

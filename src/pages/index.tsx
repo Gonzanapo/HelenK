@@ -31,24 +31,9 @@ export default function Mapa() {
   return (
     <div className="Contenedor-map">
       <SessionChecker />
-      <header className="top-header-map">
-        {/* Placeholder for the logo */}
-        <a href="#">
-          <div className="marca-map">
-            {/* <img src="LOGO.svg" alt="Logo" /> */}
-          </div>
-        </a>
-      </header>
-      <header className="header-map">
-        {/* Placeholder for navigation links */}
-        {/* ... */}
-      </header>
       <main className="main-map">
         <Maps />
       </main>
-      {/* Añade una condición al atributo className del footer */}
-
-      {/* Add a conditional rendering expression for the navbar */}
       {showNavbar && (
         <nav className={`navbar-map ${showNavbar ? "clicked" : ""}`} onClick={handleFooterClick}>
           <Link href="/">
@@ -65,7 +50,6 @@ export default function Mapa() {
       >
 
         {session ? (
-          // Usar un fragmento para envolver los elementos
           <>
             <img
               className={`img-user ${showNavbar ? "clicked" : ""}`}

@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker, Circle } from "@react-google-maps/api";
 
-// Establece el ancho y el alto del componente al 100%
 const containerStyle = {
   width: "100%",
   height: "100%",
@@ -28,13 +25,14 @@ const mapOptions = {
 
 export default function Maps() {
   const [position, setPosition] = useState({ lat: 0, lng: 0 });
-  const [realTime, setRealTime] = useState(null);
   const [circulo, setCirculo] = useState(null);
   const [markers, setMarkers] = useState([]);
   const [circulos, setCirculos] = useState([]);
   const [coordsUbi, setCoordsUbi] = useState([0, 0]);
   const [semaforos, setSemaforos] = useState(null);
-  const [minDistance, setMinDistance] = useState(50000);
+  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number }>();
+  const [map, setMap] = useState<google.maps.Map | null>(null);
+
 
 
   // Crea refs para cada elemento que quieras seleccionar
@@ -55,8 +53,19 @@ export default function Maps() {
   const modalElement = commutesEl.modal;
 
   useEffect(() => {
-    // Rest of the code remains the same as before ...
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition((position) => {
+        setUserLocation({
+          lng: position.coords.longitude,
+          lat: position.coords.latitude,
+
+        });
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
   }, []);
+
 
   // The rest of the code remains the same as before ...
 
@@ -72,6 +81,11 @@ export default function Maps() {
               Salida 12:22:45 {" "}
             </h4>{" "}
           </li>
+
+          <button className="button-centrar" onClick={() => map && userLocation && map.panTo(new google.maps.LatLng(userLocation.lat, userLocation.lng))}>
+            Centrar
+          </button>
+
           <li className="h2-route">
             {" "}
             10. min restantes <br />{" "}
@@ -81,14 +95,47 @@ export default function Maps() {
       </div>
       <div className="commutes">
         <div className="commutes-map" aria-label="Map" id="Map">
+
+
+
           <LoadScript googleMapsApiKey="AIzaSyBEJtEhY1iMBrrsDlLMUxbzk-bvZrpJHBQ&">
             <div className="map-view" ref={mapViewRef}>
               {/* Pasa el objeto mapOptions como prop al componente GoogleMap */}
               <GoogleMap
+                onLoad={setMap}
                 id="GoogleMap"
                 mapContainerStyle={containerStyle}
                 options={mapOptions}
-              ></GoogleMap>
+              >
+                {userLocation && (
+                  <>
+                    <Marker
+                      position={userLocation}
+                      icon={window.google && window.google.maps && {
+                        path: window.google.maps.SymbolPath.CIRCLE,
+                        scale: 10,
+                        fillColor: '#3083C4',
+                        fillOpacity: 1,
+                        strokeColor: '#fff',
+                        strokeWeight: 3,
+                        strokeOpacity: 1,
+                      }}
+                    />
+
+                    <Circle
+                      center={userLocation}
+                      radius={10}
+                      options={{
+                        strokeColor: '#115A9D',
+                        strokeOpacity: 0,
+                        strokeWeight: 2,
+                        fillColor: '#115A9D',
+                        fillOpacity: 0.15,
+                      }}
+                    />
+                  </>
+                )}
+              </GoogleMap>
             </div>
           </LoadScript>
         </div>
