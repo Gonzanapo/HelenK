@@ -24,7 +24,7 @@ export default function Mapa() {
   const [showNavbar, setShowNavbar] = useState(false);
 
   // Define a function to toggle the navbar visibility
-  const handleFooterClick = () => {
+ const handleFooterClick = () => {
     setShowNavbar(!showNavbar);
   };
 
@@ -36,8 +36,8 @@ export default function Mapa() {
       </main>
       {showNavbar && (
         <nav className={`navbar-map ${showNavbar ? "clicked" : ""}`} onClick={handleFooterClick}>
-          <Link href="/">
-            <p className={`navbar-link ${showNavbar ? "clicked" : ""}`}>Home</p>
+          <Link href="/sign">
+            <p className={`navbar-link ${showNavbar ? "clicked" : ""}`}>Sign</p>
           </Link>
           <Link href="/link">
             <p className={`navbar-link ${showNavbar ? "clicked" : ""}`}>Link</p>
