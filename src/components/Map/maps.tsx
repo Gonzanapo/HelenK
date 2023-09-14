@@ -47,10 +47,6 @@ export default function Maps() {
     modal: modalRef.current,
   };
 
-  // Accede a las propiedades del objeto commutesEl
-  const mapElement = commutesEl.map;
-  const initialStatePanelElement = commutesEl.initialStatePanel;
-  const modalElement = commutesEl.modal;
 
   useEffect(() => {
     console.log('El componente GoogleMap se ha renderizado');
@@ -66,10 +62,6 @@ export default function Maps() {
       alert("Geolocation is not supported by this browser.");
     }
   }, []);
-
-
-  // The rest of the code remains the same as before ...
-
   return (
     <div className="Map">
       <div className="buttons-routes">
@@ -89,19 +81,13 @@ export default function Maps() {
           </li>
         </h2>
       </div>
-
       <button className="button-centrar" onClick={() => map && userLocation && map.panTo(new google.maps.LatLng(userLocation.lat, userLocation.lng))}>
         Centrar
       </button>
-
       <div className="commutes">
         <div className="commutes-map" aria-label="Map" id="Map">
-
-
-
           <LoadScript googleMapsApiKey="AIzaSyBEJtEhY1iMBrrsDlLMUxbzk-bvZrpJHBQ&">
             <div className="map-view" ref={mapViewRef}>
-              {/* Pasa el objeto mapOptions como prop al componente GoogleMap */}
               <GoogleMap
                 onLoad={setMap}
                 id="GoogleMap"
@@ -122,10 +108,9 @@ export default function Maps() {
                         strokeOpacity: 1,
                       }}
                     />
-
                     <Circle
                       center={userLocation}
-                      radius={50}
+                      radius={10}
                       options={{
                         strokeColor: '#115A9D',
                         strokeOpacity: 0,
