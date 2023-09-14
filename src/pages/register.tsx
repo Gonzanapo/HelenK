@@ -8,7 +8,7 @@ export default function Register() {
     return (
         <div className="contenedor_register">
             <header className="top-header">
-                <Link href="/" className="boton_atras" passHref>
+                <Link href="/sign" className="boton_atras" passHref>
                     <Previous />
                 </Link>
             </header>
