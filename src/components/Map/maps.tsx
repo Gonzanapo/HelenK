@@ -53,6 +53,7 @@ export default function Maps() {
   const modalElement = commutesEl.modal;
 
   useEffect(() => {
+    console.log('El componente GoogleMap se ha renderizado');
     if (navigator.geolocation) {
       navigator.geolocation.watchPosition((position) => {
         setUserLocation({
@@ -81,11 +82,6 @@ export default function Maps() {
               Salida 12:22:45 {" "}
             </h4>{" "}
           </li>
-
-          <button className="button-centrar" onClick={() => map && userLocation && map.panTo(new google.maps.LatLng(userLocation.lat, userLocation.lng))}>
-            Centrar
-          </button>
-
           <li className="h2-route">
             {" "}
             10. min restantes <br />{" "}
@@ -93,6 +89,11 @@ export default function Maps() {
           </li>
         </h2>
       </div>
+
+      <button className="button-centrar" onClick={() => map && userLocation && map.panTo(new google.maps.LatLng(userLocation.lat, userLocation.lng))}>
+        Centrar
+      </button>
+
       <div className="commutes">
         <div className="commutes-map" aria-label="Map" id="Map">
 
@@ -124,7 +125,7 @@ export default function Maps() {
 
                     <Circle
                       center={userLocation}
-                      radius={10}
+                      radius={50}
                       options={{
                         strokeColor: '#115A9D',
                         strokeOpacity: 0,
