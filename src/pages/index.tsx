@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
@@ -24,53 +23,59 @@ export default function Mapa() {
   const [showNavbar, setShowNavbar] = useState(false);
 
   // Define a function to toggle the navbar visibility
- const handleFooterClick = () => {
+  const handleFooterClick = () => {
     setShowNavbar(!showNavbar);
   };
 
   return (
-    <div className="Contenedor-map">
-      <SessionChecker />
-      <main className="main-map">
-        <Maps />
-      </main>
-      {showNavbar && (
-        <nav className={`navbar-map ${showNavbar ? "clicked" : ""}`} onClick={handleFooterClick}>
-          <Link href="/sign">
-            <p className={`navbar-link ${showNavbar ? "clicked" : ""}`}>Sign</p>
-          </Link>
-          <Link href="/link">
-            <p className={`navbar-link ${showNavbar ? "clicked" : ""}`}>Link</p>
-          </Link>
-        </nav>
-      )}
-      <footer
-        className={`footer-map ${showNavbar ? "clicked" : ""}`}
-        onClick={handleFooterClick}
-      >
-
-        {session ? (
-          <>
-            <img
-              className={`img-user ${showNavbar ? "clicked" : ""}`}
-              id="user-real"
-              src={session.user.image || "/HelenK.png"}
-              alt="User image"
-            />
-            <h1 className={`username ${showNavbar ? "clicked" : ""}`}> {session.user.name}</h1>
-          </>
-        ) : (
-          <>
-            <NotUser />
-            <h1 className={`username ${showNavbar ? "clicked" : ""}`}>
-              Invitado
-            </h1>
-          </>
+      <div className="Contenedor-map">
+        <SessionChecker />
+        <main className="main-map">
+          <Maps />
+        </main>
+        {showNavbar && (
+          <nav
+            className={`navbar-map ${showNavbar ? "clicked" : ""}`}
+            onClick={handleFooterClick}
+          >
+            <Link href="/sign">
+              <p className={`navbar-link ${showNavbar ? "clicked" : ""}`}>
+                Sign
+              </p>
+            </Link>
+            <Link href="/link">
+              <p className={`navbar-link ${showNavbar ? "clicked" : ""}`}>
+                Link
+              </p>
+            </Link>
+          </nav>
         )}
-      </footer>
-
-
-    </div>
+        <footer
+          className={`footer-map ${showNavbar ? "clicked" : ""}`}
+          onClick={handleFooterClick}
+        >
+          {session ? (
+            <>
+              <img
+                className={`img-user ${showNavbar ? "clicked" : ""}`}
+                id="user-real"
+                src={session.user.image || "/HelenK.png"}
+                alt="User image"
+              />
+              <h1 className={`username ${showNavbar ? "clicked" : ""}`}>
+                {" "}
+                {session.user.name}
+              </h1>
+            </>
+          ) : (
+            <>
+              <NotUser />
+              <h1 className={`username ${showNavbar ? "clicked" : ""}`}>
+                Invitado
+              </h1>
+            </>
+          )}
+        </footer>
+      </div>
   );
 }
-
