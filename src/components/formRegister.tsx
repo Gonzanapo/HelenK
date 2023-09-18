@@ -79,14 +79,28 @@ export function FormRegister() {
 
   return (
     <section className="main_register">
-      <form
-        className="form_register"
-        onSubmit={(e) => {
-          handleSubmit(submitData)(e).catch((error) => {
+     <form
+        className="form_login"
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleSubmit(submitData)(event).catch((error) => {
+            // Handle any errors that may occur
             console.error(error);
           });
         }}
       >
+          <div className="input_register">
+          <User />
+          <input
+            type="string"
+            {...register("name")}
+            name="name"
+            id="name"
+            placeholder="Name"
+            alt="Name"
+          />
+        </div>
+            
         {/* Campo de entrada para el email */}
         <div className="input_register">
           <User />
