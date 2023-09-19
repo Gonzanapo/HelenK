@@ -1,6 +1,5 @@
 body{
-    height: 100vh;
-    max-height: 100vh;
+    height: fit-content;
 }
 
 .map-view{
@@ -152,10 +151,10 @@ body{
 
 .navbar-link.clicked{
     /* transition: all 2s ease-in-out; */
-    color: black;
+    color: #fff;
 }
 
 .navbar-map.clicked{
     /* transition: all 2s ease-in-out; */
-    color: black;
+    color: #fff;
 }
