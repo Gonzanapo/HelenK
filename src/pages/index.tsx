@@ -27,9 +27,8 @@ export default function Mapa() {
   const handleFooterClick = () => {
     setShowNavbar(!showNavbar);
   };
-
   const logout = () => {
-    signOut();
+    void signOut();
   };
 
   return (
