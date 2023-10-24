@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 // import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import SessionChecker from "~/components/Sign/sessionChecker";
 import Maps from "~/components/Map/maps";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import { useSession, signOut } from "next-auth/react";
 import { NotUser } from "~/components/image";
 import Link from "next/link"; // Import Link component from next/link
