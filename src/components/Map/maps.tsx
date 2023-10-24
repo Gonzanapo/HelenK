@@ -61,6 +61,7 @@ export default function Maps() {
     } else {
       alert("Geolocation is not supported by this browser.");
     }
+
   }, []);
   return (
     <div className="Map">
