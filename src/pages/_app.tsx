@@ -25,7 +25,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
     <>
       <Head>
         <title>HelenK</title>
-        {/* <link rel="icon" href="/Logo.ico" /> */}
+        <link rel="icon" href="/Logo.ico" /> 
         <meta name="description" content="HelenK" />
       </Head>
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
