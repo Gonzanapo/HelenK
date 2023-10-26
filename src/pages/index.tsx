@@ -31,6 +31,7 @@ export default function Mapa() {
     void signOut();
   };
 
+
   return (
     <div className="Contenedor-map">
       <SessionChecker />
