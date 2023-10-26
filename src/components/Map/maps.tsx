@@ -27,28 +27,32 @@ export default function Maps() {
     lat: number;
     lng: number;
   }>();
+  
+  const [coords, setCoords] = useState<{
+    lat: number;
+    lng: number;
+  }>();
+
+
   const [map, setMap] = useState<google.maps.Map | null>(null);
 
   const mapViewRef = useRef(null);
 
-  const createCircle = (coordX: number, coordY: number) => {
-    if (map) {
-      new google.maps.Circle({
-        strokeColor: "red",
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: "red",
-        fillOpacity: 0.35,
-        map,
-        center: new google.maps.LatLng(coordX, coordY),
-        radius: 30,
-      });
-    }
-  };
+  // const createCircle = (coordX: number, coordY: number) => {
+  //   if (map) {
+  //     new google.maps.Circle({
+  //       strokeColor: "red",
+  //       strokeOpacity: 0.8,
+  //       strokeWeight: 2,
+  //       fillColor: "red",
+  //       fillOpacity: 0.35,
+  //       map,
+  //       center: new google.maps.LatLng(coordX, coordY),
+  //       radius: 30,
+  //     });
+  //   }
+  // };
 
-  useEffect(() => {
-    createCircle(-34.6333901, -58.39829843);
-  }, []);
   useEffect(() => {
     console.log("El componente GoogleMap se ha renderizado");
     navigator.geolocation.watchPosition(
@@ -60,6 +64,12 @@ export default function Maps() {
       },
       () => alert("Geolocation is not supported by this browser.")
     );
+
+    setCoords({
+      lat: -34.6333901, 
+      lng: -58.39829843
+    });
+
   }, []);
 
   return (
@@ -120,6 +130,18 @@ export default function Maps() {
                     />
                     <Circle
                       center={userLocation}
+                      radius={10}
+                      options={{
+                        strokeColor: "#115A9D",
+                        strokeOpacity: 0,
+                        strokeWeight: 2,
+                        fillColor: "#115A9D",
+                        fillOpacity: 0.15,
+                      }}
+                    />
+
+                    <Circle
+                      center={coords}
                       radius={10}
                       options={{
                         strokeColor: "#115A9D",
