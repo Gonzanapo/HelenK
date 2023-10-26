@@ -24,12 +24,7 @@ const mapOptions = {
 };
 
 export default function Maps() {
-  const [position, setPosition] = useState({ lat: 0, lng: 0 });
-  const [circulo, setCirculo] = useState(null);
-  const [markers, setMarkers] = useState([]);
-  const [circulos, setCirculos] = useState([]);
-  const [coordsUbi, setCoordsUbi] = useState([0, 0]);
-  const [semaforos, setSemaforos] = useState(null);
+
   const [userLocation, setUserLocation] = useState<{
     lat: number;
     lng: number
@@ -41,12 +36,12 @@ export default function Maps() {
   const initialStatePanelRef = useRef(null);
   const modalRef = useRef(null);
 
-  // Utiliza las refs para acceder a los elementos del DOM
   const commutesEl = {
     map: mapViewRef.current,
     initialStatePanel: initialStatePanelRef.current,
     modal: modalRef.current
   };
+  console.log(commutesEl);
 
   useEffect(() => {
     console.log('El componente GoogleMap se ha renderizado');

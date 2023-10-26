@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
@@ -41,10 +42,10 @@ export default function Mapa() {
           className={`navbar-map ${showNavbar ? "clicked" : ""}`}
           onClick={handleFooterClick}
         >
-          <Link href="/sign">
+          <Link href="/sign" passHref>
             <p className={`navbar-link ${showNavbar ? "clicked" : ""}`}>Sign</p>
           </Link>
-          <Link href="/sign">
+          <Link href="/sign" passHref>
             <button
               className={`navbar-link ${showNavbar ? "clicked" : ""}`}
               onClick={logout} 
@@ -53,6 +54,8 @@ export default function Mapa() {
             </button>
           </Link>
         </nav>
+
+        
       )}
       <footer
         className={`footer-map ${showNavbar ? "clicked" : ""}`}
