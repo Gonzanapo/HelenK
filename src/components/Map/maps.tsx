@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { GoogleMap, LoadScript, Marker, Circle } from "@react-google-maps/api";
-import semaforos from "sema.ts";
+import {coordsX, coordsY} from "~/components/Map/sema";
+
 
 const containerStyle = {
   width: "100%",
@@ -23,6 +24,8 @@ const mapOptions = {
   mapId: "a1167de20e6b3769",
 };
 
+const coordsArray = coordsX.map((xVal, i) => ({ lat: Number(xVal), lng: Number(coordsY[i]) }));
+
 export default function Maps() {
   const [userLocation, setUserLocation] = useState<{
     lat: number;
@@ -30,8 +33,8 @@ export default function Maps() {
   }>();
 
   const [coords, setCoords] = useState<{
-    lat: number;
-    lng: number;
+    lat: any;
+    lng: any;
   }>();
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
@@ -49,11 +52,9 @@ export default function Maps() {
       },
       () => alert("Geolocation is not supported by this browser.")
     );
-
     setCoords({
-      //fetch aca, para que setCoords sea sema.json.
-      lat: -34.6333901,
-      lng: -58.39829843,
+      lat: coordsX[0],
+      lng: coordsY[0],
     });
   }, []);
 
