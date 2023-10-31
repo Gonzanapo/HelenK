@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { GoogleMap, LoadScript, Marker, Circle } from "@react-google-maps/api";
+import semaforos from "sema.ts";
 
 const containerStyle = {
   width: "100%",
