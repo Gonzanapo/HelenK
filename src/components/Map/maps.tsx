@@ -37,21 +37,6 @@ export default function Maps() {
 
   const mapViewRef = useRef(null);
 
-  // const createCircle = (coordX: number, coordY: number) => {
-  //   if (map) {
-  //     new google.maps.Circle({
-  //       strokeColor: "red",
-  //       strokeOpacity: 0.8,
-  //       strokeWeight: 2,
-  //       fillColor: "red",
-  //       fillOpacity: 0.35,
-  //       map,
-  //       center: new google.maps.LatLng(coordX, coordY),
-  //       radius: 30,
-  //     });
-  //   }
-  // };
-
   useEffect(() => {
     console.log("El componente GoogleMap se ha renderizado");
     navigator.geolocation.watchPosition(
@@ -65,6 +50,7 @@ export default function Maps() {
     );
 
     setCoords({
+      //fetch aca, para que setCoords sea sema.json.
       lat: -34.6333901,
       lng: -58.39829843,
     });
