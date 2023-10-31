@@ -27,12 +27,11 @@ export default function Maps() {
     lat: number;
     lng: number;
   }>();
-  
+
   const [coords, setCoords] = useState<{
     lat: number;
     lng: number;
   }>();
-
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
 
@@ -66,10 +65,9 @@ export default function Maps() {
     );
 
     setCoords({
-      lat: -34.6333901, 
-      lng: -58.39829843
+      lat: -34.6333901,
+      lng: -58.39829843,
     });
-
   }, []);
 
   return (
@@ -112,7 +110,7 @@ export default function Maps() {
                 mapContainerStyle={containerStyle}
                 options={mapOptions}
               >
-                {userLocation && (
+                {userLocation && coords && (
                   <>
                     <Marker
                       position={userLocation}
@@ -142,13 +140,13 @@ export default function Maps() {
 
                     <Circle
                       center={coords}
-                      radius={10}
+                      radius={30}
                       options={{
-                        strokeColor: "#115A9D",
-                        strokeOpacity: 0,
+                        strokeColor: "red",
+                        strokeOpacity: 0.8,
                         strokeWeight: 2,
-                        fillColor: "#115A9D",
-                        fillOpacity: 0.15,
+                        fillColor: "red",
+                        fillOpacity: 0.35,
                       }}
                     />
                   </>
