@@ -24,7 +24,6 @@ const mapOptions = {
   mapId: "a1167de20e6b3769",
 };
 
-const coordsArray = coordsX.map((xVal, i) => ({ lat: Number(xVal), lng: Number(coordsY[i]) }));
 
 export default function Maps() {
   const [userLocation, setUserLocation] = useState<{
@@ -33,8 +32,8 @@ export default function Maps() {
   }>();
 
   const [coords, setCoords] = useState<{
-    lat: any;
-    lng: any;
+    lat: number;
+    lng: number;
   }>();
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
@@ -53,8 +52,8 @@ export default function Maps() {
       () => alert("Geolocation is not supported by this browser.")
     );
     setCoords({
-      lat: coordsX[0],
-      lng: coordsY[0],
+      lat: parseFloat(coordsX[500] || '0'),
+      lng: parseFloat(coordsY[500] || '0'),
     });
   }, []);
 
