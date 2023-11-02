@@ -31,10 +31,10 @@ export default function Maps() {
     lng: number;
   }>();
 
-  const [coords, setCoords] = useState<{
+  const [coords, setCoords] = useState<Array<{
     lat: number;
     lng: number;
-  }>();
+  }>>([]);
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
 
@@ -51,15 +51,17 @@ export default function Maps() {
       },
       () => alert("Geolocation is not supported by this browser.")
     );
+    const newCoords = [];
     for (let i = 0; i < coordsX.length; i++) {
-      setCoords({
+      newCoords.push({
         lat: parseFloat(coordsX[i] || '0'),
         lng: parseFloat(coordsY[i] || '0'),
-      })
-      console.log(i);
-    
+      });
     }
+    setCoords(newCoords);
+
   }, []);
+  
 
   return (
     <div className="Map">
@@ -128,8 +130,9 @@ export default function Maps() {
                         fillOpacity: 0.15,
                       }}
                     />
-
+                  {coords.map((coords, index) => (
                     <Circle
+                      key = {index}
                       center={coords}
                       radius={30}
                       options={{
@@ -140,6 +143,7 @@ export default function Maps() {
                         fillOpacity: 0.35,
                       }}
                     />
+                    ))}
                   </>
                 )}
               </GoogleMap>
