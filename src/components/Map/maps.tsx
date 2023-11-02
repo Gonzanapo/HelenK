@@ -55,8 +55,10 @@ export default function Maps() {
       setCoords({
         lat: parseFloat(coordsX[i] || '0'),
         lng: parseFloat(coordsY[i] || '0'),
-      })}
-
+      })
+      console.log(i);
+    
+    }
   }, []);
 
   return (

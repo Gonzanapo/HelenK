@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@mantine/notifications": "^6.0.16",
+    "@types/bcryptjs": "^2.4.5",
     "@types/eslint": "^8.37.0",
     "@types/googlemaps": "^3.43.3",
     "@types/next-pwa": "^5.6.4",
