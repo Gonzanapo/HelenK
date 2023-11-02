@@ -51,10 +51,12 @@ export default function Maps() {
       },
       () => alert("Geolocation is not supported by this browser.")
     );
-    setCoords({
-      lat: parseFloat(coordsX[500] || '0'),
-      lng: parseFloat(coordsY[500] || '0'),
-    });
+    for (let i = 0; i < coordsX.length; i++) {
+      setCoords({
+        lat: parseFloat(coordsX[i] || '0'),
+        lng: parseFloat(coordsY[i] || '0'),
+      })}
+
   }, []);
 
   return (
