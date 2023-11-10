@@ -18,7 +18,7 @@ const SessionChecker = () => {
           });
           void router.push("/sign");
         }
-      }, 2000);
+      }, 200);
       return () => clearTimeout(redirectTimeout);
     }, [router, sessionData]);
 

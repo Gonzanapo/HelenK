@@ -39,8 +39,17 @@ export default function Maps() {
   const [map, setMap] = useState<google.maps.Map | null>(null);
 
   const mapViewRef = useRef(null);
+  const minDistance = 5000;
+  const radius = 0.00026903;
+
+  function isInCircle() {
+    console.log(minDistance <= radius ** 2)
+    return (minDistance <= radius ** 2);
+  }
 
   useEffect(() => {
+
+
     console.log("El componente GoogleMap se ha renderizado");
     navigator.geolocation.watchPosition(
       (position) => {
@@ -50,6 +59,8 @@ export default function Maps() {
         });
       },
       () => alert("Geolocation is not supported by this browser.")
+
+
     );
     const newCoords = [];
     for (let i = 0; i < coordsX.length; i++) {
@@ -59,6 +70,7 @@ export default function Maps() {
       });
     }
     setCoords(newCoords);
+    isInCircle();
 
   }, []);
   
@@ -136,11 +148,11 @@ export default function Maps() {
                       center={coords}
                       radius={30}
                       options={{
-                        strokeColor: "red",
-                        strokeOpacity: 0.8,
-                        strokeWeight: 2,
-                        fillColor: "red",
-                        fillOpacity: 0.35,
+                        strokeColor: "white",
+                        strokeOpacity: 0,
+                        strokeWeight: 0,
+                        fillColor: "white",
+                        fillOpacity: 0,
                       }}
                     />
                     ))}
