@@ -56,8 +56,8 @@ export default function Maps() {
     navigator.geolocation.watchPosition(
       (position) => {
         setUserLocation({
-          lat: -34.6333901,
-          lng: -58.39829843,
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
         });
       },
       () => alert("Geolocation is not supported by this browser.")
