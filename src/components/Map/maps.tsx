@@ -75,9 +75,7 @@ export default function Maps() {
       newCoords.forEach((semaforo: Coords) => {
         if (isInsideCircle(userLocation, semaforo, 0.00026903)) {
           console.log(`Estás dentro del círculo del semáforo en latitud ${semaforo.lat} y longitud ${semaforo.lng}`);
-        } else {
-          console.log(`Estás fuera del círculo del semáforo en latitud ${semaforo.lat} y longitud ${semaforo.lng}`);
-        }
+        } 
       });}
 
   }, [userLocation]);
