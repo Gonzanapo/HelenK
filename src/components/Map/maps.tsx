@@ -136,11 +136,11 @@ export default function Maps() {
                       center={coords}
                       radius={30}
                       options={{
-                        strokeColor: "red",
-                        strokeOpacity: 0.8,
+                        strokeColor: "grey",
+                        strokeOpacity: 0,
                         strokeWeight: 2,
-                        fillColor: "red",
-                        fillOpacity: 0.35,
+                        fillColor: "grey",
+                        fillOpacity: 0.2,
                       }}
                     />
                     ))}
