@@ -13,6 +13,16 @@ const center = {
   lng: -58.450324,
 };
 
+interface Coords {
+  lat: number;
+  lng: number;
+}
+
+function isInsideCircle(userLocation: Coords, semaforo: Coords, radio: number): boolean {
+  const dist = Math.sqrt((userLocation.lat - semaforo.lat) ** 2 + (userLocation.lng - semaforo.lng) ** 2);
+  return dist <= radio;
+}
+
 const mapOptions = {
   center: center,
   fullscreenControl: false,
@@ -40,6 +50,7 @@ export default function Maps() {
 
   const mapViewRef = useRef(null);
 
+  
   useEffect(() => {
     console.log("El componente GoogleMap se ha renderizado");
     navigator.geolocation.watchPosition(
@@ -60,7 +71,16 @@ export default function Maps() {
     }
     setCoords(newCoords);
 
-  }, []);
+    if (userLocation) {
+      newCoords.forEach((semaforo: Coords) => {
+        if (isInsideCircle(userLocation, semaforo, 0.00026903)) {
+          console.log(`Estás dentro del círculo del semáforo en latitud ${semaforo.lat} y longitud ${semaforo.lng}`);
+        } else {
+          console.log(`Estás fuera del círculo del semáforo en latitud ${semaforo.lat} y longitud ${semaforo.lng}`);
+        }
+      });}
+
+  }, [userLocation]);
   
 
   return (
