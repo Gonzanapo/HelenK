@@ -1,7 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { GoogleMap, LoadScript, Marker, Circle } from "@react-google-maps/api";
 import {coordsX, coordsY} from "~/components/Map/sema";
+import fetch from 'node-fetch';
 
+async function enviarEstado(mac: string) {
+  const respuesta = await fetch(`http://direccion_ip_de_tu_esp01/estado?valor=true&mac=${mac}`);
+  const texto = await respuesta.text();
+  console.log(texto);
+}
 
 const containerStyle = {
   width: "100%",
@@ -75,6 +81,7 @@ export default function Maps() {
       newCoords.forEach((semaforo: Coords) => {
         if (isInsideCircle(userLocation, semaforo, 0.00026903)) {
           console.log(`Estás dentro del círculo del semáforo en latitud ${semaforo.lat} y longitud ${semaforo.lng}`);
+          enviarEstado('84:F3:EB:05:75:52');
         } 
       });}
 
