@@ -1,7 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { GoogleMap, LoadScript, Marker, Circle } from "@react-google-maps/api";
 import {coordsX, coordsY} from "~/components/Map/sema";
+import fetch from 'node-fetch';
 
+async function enviarEstado(mac: string) {
+  const respuesta = await fetch(`http://direccion_ip_de_tu_esp01/estado?valor=true&mac=${mac}`);
+  const texto = await respuesta.text();
+  console.log(texto);
+}
 
 const containerStyle = {
   width: "100%",
@@ -12,6 +18,16 @@ const center = {
   lat: -34.564959,
   lng: -58.450324,
 };
+
+interface Coords {
+  lat: number;
+  lng: number;
+}
+
+function isInsideCircle(userLocation: Coords, semaforo: Coords, radio: number): boolean {
+  const dist = Math.sqrt((userLocation.lat - semaforo.lat) ** 2 + (userLocation.lng - semaforo.lng) ** 2);
+  return dist <= radio;
+}
 
 const mapOptions = {
   center: center,
@@ -40,13 +56,14 @@ export default function Maps() {
 
   const mapViewRef = useRef(null);
 
+  
   useEffect(() => {
     console.log("El componente GoogleMap se ha renderizado");
     navigator.geolocation.watchPosition(
       (position) => {
         setUserLocation({
-          lng: position.coords.longitude,
           lat: position.coords.latitude,
+          lng: position.coords.longitude,
         });
       },
       () => alert("Geolocation is not supported by this browser.")
@@ -60,7 +77,15 @@ export default function Maps() {
     }
     setCoords(newCoords);
 
-  }, []);
+    if (userLocation) {
+      newCoords.forEach((semaforo: Coords) => {
+        if (isInsideCircle(userLocation, semaforo, 0.00026903)) {
+          console.log(`Estás dentro del círculo del semáforo en latitud ${semaforo.lat} y longitud ${semaforo.lng}`);
+          enviarEstado('84:F3:EB:05:75:52');
+        } 
+      });}
+
+  }, [userLocation]);
   
 
   return (
@@ -136,11 +161,11 @@ export default function Maps() {
                       center={coords}
                       radius={30}
                       options={{
-                        strokeColor: "red",
-                        strokeOpacity: 0.8,
+                        strokeColor: "grey",
+                        strokeOpacity: 0,
                         strokeWeight: 2,
-                        fillColor: "red",
-                        fillOpacity: 0.35,
+                        fillColor: "grey",
+                        fillOpacity: 0.2,
                       }}
                     />
                     ))}
