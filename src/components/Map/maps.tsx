@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { GoogleMap, LoadScript, Marker, Circle } from "@react-google-maps/api";
 import {coordsX, coordsY} from "~/components/Map/sema";
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 // async function enviarEstado(mac: string) {
 //   const respuesta = await fetch(`http://direccion_ip_de_tu_esp01/estado?valor=true&mac=${mac}`);

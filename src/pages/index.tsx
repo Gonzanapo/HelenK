@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import SessionChecker from "~/components/Sign/sessionChecker";
+// import SessionChecker from "~/components/Sign/sessionChecker";
 import Maps from "~/components/Map/maps";
 import { useSession, signOut } from "next-auth/react";
 import { NotUser } from "~/components/image";
@@ -15,8 +15,6 @@ export default function Mapa() {
     // ...
   }, []);
 
-  // The rest of the code remains the same as before
-  // ...
 
   const { data: session } = useSession();
 

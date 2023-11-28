@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/link-passhref */
 import z from "zod";
 import type { ZodType } from "zod";
 import { useForm } from "react-hook-form";
@@ -148,4 +149,4 @@ export function FormLogin() {
     </section>
   );
 }
-  
+    
