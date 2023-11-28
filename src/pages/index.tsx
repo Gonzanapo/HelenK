@@ -34,7 +34,7 @@ export default function Mapa() {
 
   return (
     <div className="Contenedor-map">
-     <SessionChecker />
+     {/* <SessionChecker /> */}
       <main className="main-map">
         <Maps />
       </main>
