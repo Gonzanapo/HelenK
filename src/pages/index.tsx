@@ -27,7 +27,9 @@ export default function Mapa() {
   };
   const logout = () => {
     void signOut();
+    window.location.href = '/sign';
   };
+  
 
 
   return (
